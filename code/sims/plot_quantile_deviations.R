@@ -1,12 +1,8 @@
 library(tidyverse)
 
-setwd("D:/onedrive/bctm_jasa_revision")
 pmax <- 5
 ret_alpha <- ret_qq <- vector("list", pmax)
 for(pnon in  0:pmax){
-  
-  
-  
   load(paste0("processed_data/sims/score_sims_nonlin_pnon", pnon, "_its4000_burnin2000_m8.RData"))
   results <- res[[1]]
   
@@ -25,9 +21,7 @@ gg_df <- lapply(ret_alpha, function(x) bind_rows(x[!is.na(x),])) %>% bind_rows(.
 gg_df$pnon <- paste0("p = ", as.numeric(gg_df$pnon)-1)
 
 
-
-
-
+# alpha deviation plots
 p1 <- gg_df  %>% ggplot() +
   geom_boxplot(aes(x=name, y=value)) +
   geom_hline(yintercept=0,col="blue", size=1) +
@@ -40,9 +34,10 @@ p1 <- gg_df  %>% ggplot() +
         axis.text.y = element_text(angle = 45, size=20),
         strip.background = element_rect(colour="black"))
 p1
-ggsave("figures/alpha_devs.png", plot=p1)
+ggsave("manuscript/figs/alpha_devs.png", plot=p1)
 
 
+# quantile deviation plot for paper
 gg_df_qq <- lapply(ret_qq, function(x) bind_rows(x[!is.na(x),])) %>% bind_rows(.id="pnon" ) %>%
   set_names(c("pnon", "model", paste0("alpha =", seq(0.1, 0.9, by=0.1)))) %>% 
   pivot_longer(cols=-c(pnon, model))
@@ -65,9 +60,10 @@ p0 <- gg_df_qq %>% filter(pnon == "p = 0" | pnon == "p = 5") %>% mutate(Model = 
   geom_hline(yintercept=0, linetype=2, colour="blue")
 p0
 
-ggsave("figures/quantile_devs_small.png", plot=p0, height=5)
+ggsave("manuscript/figs/quantile_devs_small.png", plot=p0, height=5)
 
 
+# quantile deviation plots for all scenarios
 p2 <- gg_df_qq %>%  ggplot() + geom_boxplot(aes(x=name, y=value)) + geom_hline(yintercept=0,col="blue", size=1)+
   geom_point(aes(x=name, y=mean_dev), col="red", data=gg_df_qq %>% group_by(model, name) %>% summarise(mean_dev = mean(value)) %>% ungroup)+
   facet_grid(pnon~ factor(model, labels=c("Full BCTM", "Full MLT", "BAMLSS QR"))) +
@@ -78,4 +74,4 @@ p2 <- gg_df_qq %>%  ggplot() + geom_boxplot(aes(x=name, y=value)) + geom_hline(y
         axis.text.y = element_text(angle = 45, size=20),
         strip.background = element_rect(colour="black"))
 p2
-ggsave("figures/quantile_devs.png", plot=p2)
+ggsave("manuscript/figs/quantile_devs.png", plot=p2)

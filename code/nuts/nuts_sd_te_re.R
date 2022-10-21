@@ -1,13 +1,14 @@
 ##
-## Script name: nuts.R
+## Script name: nuts_sd_te_re.R
 ##
 ## Purpose of script: implements the No-U-Turn sampler by Hoffmann and Gelman (2014) with dual averaging and mass matrix adaption for 
 ##                    Bayesian Conditional transformation models; imitates the output style of
 #                     rstan (Stan Development Team, 2020) and uses mass matrix adaptation from adnuts (Monnahan and Kristensen, 2018)
-##
+##                    Uses IWLS updates for tau2 (NOT Gibbs)
+##                    Uses scale-dependent priors where theta for prior elicitation is hard-coded (see 07_fram_te_re_sd.R)
 ## Author: Manuel Carlan
 ##
-## Date Created: 2020-10-7
+## Date Created: 2022-10-7
 ##
 ## Email: mcarlan@uni-goettingen.de
 ##
@@ -151,7 +152,6 @@ NUTS <- function(n_iter, xx, f, gr, ll, start, warmup = floor(n_iter/2),thin=1, 
     eps_out <- eps_bar <- H_bar <- NULL
   }
   
-  # xx <- as.environment(xx)
   
   
   mbm <- microbenchmark::microbenchmark(
@@ -165,11 +165,7 @@ NUTS <- function(n_iter, xx, f, gr, ll, start, warmup = floor(n_iter/2),thin=1, 
   j_out <-  rep(0, n_iter)
   
   
-  # message('')
-  # message(paste('Starting NUTS at', start))
-  
   Ks_t <- Ks_f
-  # names(Ks_t) <- names(pen_ident)
   
   K_inds <- xx$K_inds
   labels <- xx$labels
@@ -182,22 +178,6 @@ NUTS <- function(n_iter, xx, f, gr, ll, start, warmup = floor(n_iter/2),thin=1, 
   n_omega <- 11
   omega_grid <- seq(0.05, 0.95, length = n_omega)
   
-  
-  
-  # pre_Ks <- lapply(omega_grid, function(omega) Ks[[1]]*omega + (1 - omega) * Ks[[2]])
-  # K_determinants <- lapply(pre_Ks, function(K) det(K))
-  
-  # K_ranks <- lapply(pre_Ks, rankMatrix)
-  # 
-  # K_sum <- Ks_f[[1]] + Ks_f[[2]]
-  # xx$S <- K_sum
-  # xx$S
-  
-  
-  # S <- as.matrix(bdiag(lapply(K_inds, function(x) Reduce("+", Ks_t[x]))))
-  # xx$S <- S
-  # ct <- 3
-  # alpha <- 0.05
   
   if(is.null(sd_params)){
     ct <- 3
@@ -227,17 +207,11 @@ NUTS <- function(n_iter, xx, f, gr, ll, start, warmup = floor(n_iter/2),thin=1, 
   myseed <- 12
   
   
-  #theta <- hyper_beta(diag(ncol(K)), alpha=alpha, R=R, ct=ct, myseed=myseed)$root
-  
-  # theta <- 0.0001274432
-  # theta <- 0.02509002
-  
   theta <- 0.0005154369
   #  theta <- hyper_omega_beta(K1 = Ks_f[[1]], K2 = Ks_f[[2]], alpha=alpha, R=R, ct=ct, A=diag(ncol(Ks_f[[1]])),
   #                   omegaseq=omega_grid, omegaprob= rep(1/n_omega, n_omega), 
   #                   myseed=myseed)#$root
   
-  # theta <- 0.005
   print(paste0("theta: ", theta))
   ## beta are the position parameters
   ## r are the momentum parameters
@@ -250,16 +224,8 @@ NUTS <- function(n_iter, xx, f, gr, ll, start, warmup = floor(n_iter/2),thin=1, 
   #
   omega_out <- matrix(0.5, nrow=n_iter, ncol=n_pen)
   
-  # which(eff_pen[1] == name_groups)
-  # lapply(  names(pen_ident))
-  # inds[[1]] <- 
   pb <- progress::progress_bar$new(format = "[:bar] :current/:total (:percent)", total = n_iter)
   pb$tick(0)
-  
-  # tau2 <- rep(0.1, npen)
-  # inds <- 1:n_coef
-  # Ks <- vector(mode="list", length=n_tau)
-  
   
   start_tau <- 1
   
@@ -401,47 +367,7 @@ NUTS <- function(n_iter, xx, f, gr, ll, start, warmup = floor(n_iter/2),thin=1, 
       }
     }
     #---------------------------------------------------------------------------
-    
-    # update tau2s and multiply with corresponding precision matrix
-    # for(i in 1:n_pen){
-    #   grp <- pen_ident[[i]] 
-    #   par <- beta_out[iter, grp ]
-    #   
-    #   
-    #   omega <- if(iter == 1) omega_start else omega_out[iter-1, i]
-    #   
-    #   tau2_out[iter,i] <- tau2_xy <-  rinvgamma(1, hyper_a + 0.5*sum_ranks[[i]], hyper_b + as.matrix(0.5*t(par)%*%(omega*Klist[[i]][[1]] +  (1-omega)*Klist[[i]][[2]])%*%par))
-    #   
-    #   
-    #   
-    #   
-    #   
-    #   omega_probs <- sapply(1:n_omega, function(w) 0.5*(K_determinants[[i]][[w]]) - 1/(2*tau2_xy) * (t(par)%*% (pre_Ks[[i]][[w]] %*% par)))  #- log(n_omega))
-    #   
-    #   omega_probs <- exp(omega_probs)
-    #   
-    #   omega_probs <- omega_probs - max(omega_probs)
-    #   
-    #   
-    #   
-    #   min_prob <- min(omega_probs)
-    #   omega_probs <- (omega_probs - min_prob) / (max(omega_probs - min_prob))
-    #   
-    #   omega_ind <- sample(1:n_omega, size=1, prob = omega_probs)
-    #   
-    #   omega_out[iter, i] <- omega <- omega_grid[omega_ind]
-    #   K_iter[[i]] <- pre_Ks[[i]][[omega_ind]]/ tau2_xy
-    #   
-    #   
-    #   # print(paste("omega: ", omega, "tau2: ", tau2_xy))
-    #   
-    #   
-    # }
-    
-    
-    
-    # S <- as.matrix(bdiag(c(K_iter)))
-    # xx$S <- S
+    # IWLS updates for tau2
     
     i <- 1
     

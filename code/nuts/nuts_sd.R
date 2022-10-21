@@ -5,7 +5,7 @@
 ##                    Bayesian Conditional transformation models; 
 ##                    scale dependent prior for tau2; updates via IWLS sampler
 ##                    imitates the output style of rstan (Stan Development Team, 2020) and uses mass matrix adaptation from adnuts (Monnahan and Kristensen, 2018)
-##                    
+##                    Uses scale-dependent priors
 ## Author: Manuel Carlan
 ##
 ## Date Created: 2022-03-15

@@ -2,8 +2,6 @@ library(tidyverse)
 library(dplyr)
 library(tidyr)
 
-setwd("D:/onedrive/bctm_jasa_revision/")
-#rm(list=ls())
 
 pnons <- 0:5
 length(pnons)
@@ -52,5 +50,5 @@ p1 <- gg %>% ggplot(aes(x=source, y=value)) +
   xlab("") + ylab("")
 p1
 
-ggsave("figures/mads.png", plot=p1)
+ggsave("manuscript/figs/mads.png", plot=p1)
 

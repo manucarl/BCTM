@@ -1,5 +1,5 @@
 ##
-## Script name: nuts.R
+## Script name: nuts_omega.R
 ##
 ## Purpose of script: implements the No-U-Turn sampler by Hoffmann and Gelman (2014) with dual averaging and mass matrix adaption for 
 ##                    Bayesian Conditional transformation models; imitates the output style of
@@ -7,7 +7,7 @@
 ##
 ## Author: Manuel Carlan
 ##
-## Date Created: 2020-10-7
+## Date Created: 2022-10-7
 ##
 ## Email: mcarlan@uni-goettingen.de
 ##

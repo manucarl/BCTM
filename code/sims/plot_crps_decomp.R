@@ -22,16 +22,16 @@ load_inst(packages)
 
 pnon <- 0
 
-e1 <- hyx_sm(y, x1, data=data)
-e2 <- hyx_sm(y, x2, data=data)
-e3 <- hyx_sm(y, x3, data=data)
-e4 <- hyx_sm(y, x4, data=data)
-e5 <- hyx_sm(y, x5, data=data)
-e6 <- hyx_sm(y, x6, data=data)
-e7 <- hyx_sm(y, x7, data=data)
-  
-
-effects <- list(e1, e2, e3, e4, e5, e6, e7)
+# e1 <- hyx_sm(y, x1, data=data)
+# e2 <- hyx_sm(y, x2, data=data)
+# e3 <- hyx_sm(y, x3, data=data)
+# e4 <- hyx_sm(y, x4, data=data)
+# e5 <- hyx_sm(y, x5, data=data)
+# e6 <- hyx_sm(y, x6, data=data)
+# e7 <- hyx_sm(y, x7, data=data)
+#   
+# 
+# effects <- list(e1, e2, e3, e4, e5, e6, e7)
 
 Bpreds <- Bppreds <- vector("list", pnon+2)
 
@@ -153,7 +153,7 @@ if (length(varn) > 0) {
 
 ## Quantile regression.
 bamlss_models <- lapply(quantile_levels, function(alpha) bamlss(f,
-                                                           data = data, optimizer = FALSE, sampler = BayesX,
+                                                           data = data, optimizer = FALSE, #sampler = BayesX,
                                                            family = gF("quant", prob = alpha))
 )
 
@@ -173,7 +173,8 @@ gg
 })
 
 # save(gg, file="processed_data/quantile_scores_gg.Rdata")
-load("processed_data/quantile_scores_gg.Rdata")
+load("processed_data/sims/quantile_scores_gg.Rdata")
+
 gg <- bind_rows(gg, .id="p")
 gg$Model <- factor(gg$Model, levels=c("bctm", "mlt", "bamlss_qr"), labels=c("Full BCTM", "Full MLT", "BAMLSS QR"))
 p1 <- gg %>% ggplot() +
@@ -187,6 +188,6 @@ p1 <- gg %>% ggplot() +
         axis.text.y = element_text(angle = 45, size=20))
 p1
 
-ggsave("figures/crps_decomp.png", plot=p1, height=6)
+ggsave("manuscript/figs/crps_decomp.png", plot=p1, height=6)
 # points(quantile_levels ,sapply(seq_along(quantile_levels), crps_decomp,  conditional_quantiles_bamlss_qr), type="l")
 

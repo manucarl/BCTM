@@ -1,11 +1,7 @@
 library(tidyverse)
 library(dplyr)
 library(tidyr)
-# mainpath <- "C:/projects/ctm/sims/results/"
 
-setwd("D:/onedrive/bctm_jasa_revision/")
-# str(res)
-rm(list=ls())
 
 
 pmax <- 5
@@ -16,9 +12,6 @@ res <- vector("list", length(pnons))
 
 quantile_score_list <- vector("list", length(pnons))
 for(pnon in pnons){
-  # pbctm <-lapply(res, testFunction)
-  # load(paste0("processed-data/sims/a2_b05_new/new_sims_nonlin_pnon" , pnon, "_its2000_burnin1000_m8.RData"))
-  # load(paste0("processed-data/sims/a1_b0001/new_sims_nonlin_pnon" , pnon, "_its2000_burnin1000_m8.RData"))
   load(paste0("processed_data/sims/score_sims_nonlin_pnon", pnon, "_its4000_burnin2000_m8.RData"))
   
   quantile_scores <-  do.call(rbind, lapply(res[[as.character(pnon)]], "[", "quantile_scores"))
@@ -28,7 +21,7 @@ for(pnon in pnons){
   quantile_scores$model <- str_extract(quantile_scores$model, "[^_]+")
   
   
-  quantile_score_list[[pnon+1]] <- quantile_scores #%>% group_by(model) %>% summarize(mean_interval_score = sum(is, na.rm=TRUE))
+  quantile_score_list[[pnon+1]] <- quantile_scores
   
 }
 
@@ -47,4 +40,4 @@ p1 <- bind_rows(quantile_score_list, .id="pnon") %>%
 
 p1
 
-ggsave("figures/quantile_scores.png", plot=p1, height=6)
+ggsave("manuscript/figs/quantile_scores.png", plot=p1, height=6)
