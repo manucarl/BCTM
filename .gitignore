@@ -5,4 +5,5 @@
 .Ruserdata
 *.Rproj
 
-processed_data
+processed_data/framingham/rhat_runs
+processed_data/sims/nonlin_sims
