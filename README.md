@@ -26,7 +26,8 @@ types of competitors.
 All used data is freely available and made available through packages in the code.
 
 ## Code
-
+- folder ./code/ contains helper functions used by BCTM in setting up the model
+- folder ./nuts/ contains the NUTS code used for posterior inference; **Note that, currently updates of the smoothing variances and results of the prior elicitation process for theta are hardcoded in many cases**
 - folder ./sims/ contains R code to reproduce all simulations and plots from the paper and the supplement
 - folder ./framingham/ contains R code to reproduce all models and plots for the Framingham heart study illustration
 - folder ./leukemia/ contains R code to reproduce all models and plots for the Leukemia lung cancer survival illustration
