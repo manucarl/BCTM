@@ -23,7 +23,7 @@ source("code/nuts/nuts_utils.R")
 source("code/nuts/nuts.R")
 source("code/nuts/adnuts_helper.R")
 
-packages <- c("spBayesSurv", "survival", "BayesX", "scam", "Matrix", "Rcpp", "RcppArmadillo", "MCMCpack", "sf", "rgeos", "ggplot2","RhpcBLASctl", "loo", "splineDesign")
+packages <- c("spBayesSurv", "survival", "BayesX", "scam", "Matrix", "Rcpp", "RcppArmadillo", "MCMCpack", "sf", "rgeos", "ggplot2","RhpcBLASctl", "loo")
 load_inst(packages)
 # 
 # omp_set_num_threads(1)
@@ -107,6 +107,7 @@ object_ph_re$IC$WAIC1$estimates
 #######################################################################################################
 # PH model with spatial effect - bctm
 #######################################################################################################
+source("code/nuts/nuts_omega_flex.R")
 
 object_ph_spat <- bctm(time ~hy_sm(time, data=data,  center=T, q = 20, add_to_diag=10e-6)+
                          hx_lin(age) + hx_lin(sex)+ hx_lin(wbc) + hx_lin(tpi) +
@@ -122,7 +123,7 @@ object_ph_spat$IC$WAIC1$estimates
 
 
 #######################################################################################################
-# PH model with spatial effect - bctm
+# NPH model with spatial effect - bctm
 #######################################################################################################
 # library(splineDesign)
 object_nph <- bctm(time ~ hyx_sm(time, age, data=data,  center=T, q = c(10,10), add_to_diag=10e-6)+
@@ -135,9 +136,13 @@ object_nph <- bctm(time ~ hyx_sm(time, age, data=data,  center=T, q = c(10,10), 
 load("processed_data/leukemia/leuk_nph_cens.RData")
 object_nph$IC$WAIC1$estimates
 
+
+
+source("code/nuts/nuts_omega_spat.R")
+
 object_nph_spat <- bctm(time ~ hyx_sm(time, age, data=data,  center=T, q = c(10,10), add_to_diag=10e-6)+
                           hx_lin(sex)+ hx_lin(wbc) + hx_lin(tpi) +
-                          hx_spat2(district, nmat=nmat, data),
+                          hx_spat(district, nmat=nmat, data),
                         cens = as.logical(data$cens),
                         family = "mev", data=data, iterations = its, intercept=T, 
                         hyperparams=list(a=1, b=0.001), nuts_settings=list(adapt_delta = 0.95, max_treedepth=8), seed = seed)
@@ -146,3 +151,10 @@ object_nph_spat <- bctm(time ~ hyx_sm(time, age, data=data,  center=T, q = c(10,
 # save(object_nph_spat, file="processed_data/leukemia/leuk_nph_spat_cens.RData")
 load("processed_data/leukemia/leuk_nph_spat_cens.RData")
 object_nph_spat$IC$WAIC1$estimates
+
+
+object_nph <- bctm(time ~ hyx_sm(time, age, data=data, q=c(10, 10), center=T)+
+                     hx_spat2(district, data=data, nmat=nmat)+
+                     hx_lin(sex) + hx_lin(wbc) + hx_lin(tpi) , #cens = as.logical(data$cens),
+                   family = "mev", data=data, iterations = 100, intercept=T, # remove intercept 
+                   hyperparams=list(a=1, b=0.001), nuts_settings=list(adapt_delta = 0.80, max_treedepth=10), seed = seed)
