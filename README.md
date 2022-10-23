@@ -36,9 +36,12 @@ All used data is freely available and made available through packages in the cod
 
 Used libraries are captured in the renv.lock file (after installing the `renv`package use `renv::init()`).
 
-The author(s) can then directly edit (or replace) the manuscript template files in their own GitHub repository. Author(s) can also add their own data, code, and other files as needed. 
+### Usage
+All code in sims/framingham/leukemia/veteran is self-contained and can be used by simply running the scripts.
 
-For guidance on getting started with git, we recommend the [Happy with git r](https://happygitwithr.com) tutorials.
+
+## Processed Files
+Folder ./processed_data/ contains all results used in the paper except for files that are larger than GitHub's limits.
 
 **Importantly, the authors should provide an overview of how to carry
 out the analyses presented in their manuscript in the `README.md` of their
