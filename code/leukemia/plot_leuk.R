@@ -1,35 +1,33 @@
 ## ---------------------------
 ##
-## Script name: leuk01_plots.R
+## Script name: plot_leuk.R
 ##
-## Purpose of script: creates survivor function and spatial plot for leukemia data in "Bayesian Conditional Transformation Models"
+## Purpose of script: generates survivor functions and spatial plot
 ##
 ## Author: Manuel Carlan
 ##
-## Date Created: 2020-6-5
+## Date Created: 2022-6-5
 ##
 ## Email: mcarlan@uni-goettingen.de
 ##
 ## ---------------------------
 library(dplyr)
 # rm(list = ls())
-path <- "D:/GitHub/bctm_paper/code/"
-setwd(path)
 
-source("bctm_utils.R")
-source("bctm_design_funs2.R")
-source("bctm_design.R")
-source("bctm_fun.R")
+source("code/bctm_utils.R")
+source("code/bctm_design_funs2.R")
+source("code/bctm_design.R")
+source("code/bctm_fun.R")
 
-source("nuts/nuts_utils.R")
-source("nuts/nuts.R")
-source("nuts/adnuts_helper.R")
+source("code/nuts/nuts_utils.R")
+source("code/nuts/adnuts_helper.R")
+source("code/nuts/nuts.R")
 
-packages <- c("spBayesSurv", "survival", "BayesX", "scam", "Matrix", "Rcpp", "RcppArmadillo", "MCMCpack", "sf", "rgeos", "ggplot2")
+packages <- c("spBayesSurv", "survival", "BayesX", "scam", "Matrix", "Rcpp", "RcppArmadillo", "MCMCpack", "sf", "rgeos", "ggplot2", "s2")
 load_inst(packages)
 
 
-sourceCpp("rcpp/posterior_grad_xx2.cpp")
+sourceCpp("code/rcpp/posterior_grad_xx2.cpp")
 
 # get data
 data("LeukSurv", package="spBayesSurv")
@@ -57,20 +55,21 @@ family <- "mev"
 
 
 seed <- 123
+set.seed(seed)
 its <- 2000
 # proportional hazards model with spatial effect -----------------------------------------------------------------------------------------------
+
 object_ph <- bctm(time ~ hy_sm(time,data=data,  center=T)+
                     hx_spat(district, data=data, nmat=nmat)+
                     hx_lin(age) +hx_lin(sex) + hx_lin(wbc) + hx_lin(tpi) , #cens = as.logical(data$cens),
                   family = family, data=data, iterations = its, intercept=F, # remove intercept 
-                  hyperparams=list(a=2, b=0.5), nuts_settings=list(adapt_delta = 0.80, max_treedepth=10), seed = seed)
+                  hyperparams=list(a=1, b=0.001), nuts_settings=list(adapt_delta = 0.80, max_treedepth=10), seed = seed)
 
-# mcmcplots::traplot(object_ph$samples$beta)
 object <- object_ph
 
 # get model design matrix
-# X <- object$X
-# Xp <- object$Xp
+X <- object$X
+Xp <- object$Xp
 
 burnin <- object$mcmc$burnin
 
@@ -78,7 +77,6 @@ burnin <- object$mcmc$burnin
 betas <- object$samples$beta[burnin:its,]
 colnames(betas) <- colnames(X)
 
-# traplot(betas)
 
 # indicators for exponentiation
 exp_ident <- object$model$exp_ident
@@ -96,31 +94,6 @@ nwenglandsp <- bnd2sp(nwengland)
 newenglandsf <-st_as_sf(nwenglandsp)
 
 label_inds <-object$model$label_inds
-
-
-# get beta_tilde vector of reparametrized basis coefficients
-bt <- object$beta_tilde
-xlabels <- c("hx_lin(tpi)", "hx_lin(age)", "hx_lin(sex)", "hx_lin(wbc)")
-
-# create Table2 ---------------------------------------------------------------------------------------------------------------
-bt[label_inds%in%xlabels]
-
-beta_samples <- object$samples$beta[(burnin+1):its,]
-bt_samples <- beta_samples
-bt_samples[,exp_ident] <- exp(beta_samples[,exp_ident])
-
-xsamples <- bt_samples[,label_inds%in%xlabels]
-table2 <- cbind("Mean" = colMeans(xsamples), "s.d." = apply(xsamples, 2, sd), q=t(apply(xsamples , 2, quantile, c(0.5, 0.025, 0.975))))
-rownames(table2) <- c("tpi", "age", "sex", "wbc")
-table2
-
-# Mean       s.d.        50%         2.5%      97.5%
-# tpi 0.48866545 0.03420332 0.48796338  0.416508340 0.55748311
-# age 0.08145468 0.06430202 0.08154937 -0.039386159 0.19997948
-# sex 0.16455972 0.03459662 0.16480263  0.093313158 0.23242449
-# wbc 0.02312324 0.00937159 0.02331872  0.004997466 0.04218026
-
-# xtable::xtable(table2, digits=3)
 
 
 
@@ -165,7 +138,13 @@ effsamples005 <-
   ) %*% t(bt_samples[, which(label_inds != "hs(district)")]) 
 
 effsamples005[1,] <- effsamples050[1,] <- effsamples095[1,] <- -Inf
+
+
+# minimum-extreme value distribution function
+pmev <- function(x) 1 - exp(-exp(x))
+
 # get data for plot A
+
 gg <-
   lapply(list(
     "5%" = effsamples005,
@@ -227,6 +206,6 @@ p2
 
 p <-cowplot::plot_grid(p1, p2, labels=c("A","B"), ncol=2)#+ panel_border(remove = TRUE, color="white")
 p
-ggsave("D:/GitHub/bctm_paper/manuscript/figs/leuk_ph.pdf", plot=p,height=3.5, width=9, units="in", bg = "transparent")
+ggsave("manuscript/figs/leuk_ph.pdf", plot=p,height=3.5, width=9, units="in", bg = "transparent")
 
 

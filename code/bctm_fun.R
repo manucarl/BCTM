@@ -127,7 +127,7 @@ bctm <- function(formula, family = c("gaussian", "logistic", "mev"), data, hyper
   
   
   
-  if(is.null(cens)){
+  # if(is.null(cens)){
  DIC <- {
    Dbar <- -2 * mean(unlist(chain$log_liks[burnin:iterations]), na.rm = T)
      Dhat <- -2 * sum(log(dens(h, hp)))
@@ -171,19 +171,19 @@ bctm <- function(formula, family = c("gaussian", "logistic", "mev"), data, hyper
 
  LOOIC <- ifelse(looic, suppressWarnings(loo::loo(t(log(dens(X%*%t(bt_samples), Xp%*%t(bt_samples)))))), NULL)
   
- } else{
-  
-   ll_i = switch(family, gaussian = dnorm, logistic = function(h) ll_logit_i, mev = ll_mev_i)
-   
-  DIC <- NULL   
-  WAIC1 <- loo::waic(sapply((burnin+1):its, function(x) ll_i(chain$beta[x,], xx)) %>% t)
-  
-  
-  WAIC2 <- NULL
-  WAIC3 <- NULL
-  LOOIC <- NULL
-
-}
+#  } else{
+#   
+#    ll_i = switch(family, gaussian = dnorm, logistic = function(h) ll_logit_i, mev = ll_mev_i)
+#    
+#   DIC <- NULL   
+#   WAIC1 <- loo::waic(sapply((burnin+1):its, function(x) ll_i(chain$beta[x,], xx)) %>% t)
+#   
+#   
+#   WAIC2 <- NULL
+#   WAIC3 <- NULL
+#   LOOIC <- NULL
+# 
+# }
   
   object <- list(y = model$y,
                  X = X,
