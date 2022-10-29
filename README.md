@@ -1,58 +1,47 @@
-JASA Reproducibility Materials Template
+Bayesian Conditional Transformation Models
 ================
 
-This GitHub repository contains a suggested template structure for authors who
-submit to JASA (either Applications and Case Studies or Theory and
-Methods) to include materials to reproduce analyses, visualizations, and
-tables.
+## Abstract
+Recent developments in statistical regression methodology shift away from pure mean
+regression towards distributional regression models. One important strand thereof is
+that of conditional transformation models (CTMs). CTMs infer the entire conditional
+distribution directly by applying a transformation function to the response condi-
+tionally on a set of covariates towards a simple log-concave reference distribution.
+Thereby, CTMs allow not only variance, kurtosis or skewness but the complete con-
+ditional distribution to depend on the explanatory variables. We propose a Bayesian
+notion of conditional transformation models (BCTMs) focusing on exactly observed
+continuous responses, but also incorporating extensions to randomly censored and
+discrete responses. Rather than relying on Bernstein polynomials that have been
+considered in likelihood-based CTMs, we implement a spline-based parametrization
+for monotonic effects that are supplemented with smoothness priors. Furthermore,
+we are able to benefit from the Bayesian paradigm via easily obtainable credible in-
+tervals and other quantities without relying on large sample approximations. A simu-
+lation study demonstrates the competitiveness of our approach against its likelihood-
+based counterpart but also Bayesian additive models of location, scale and shape and
+Bayesian quantile regression. Two applications illustrate the versatility of BCTMs
+in problems involving real world data, again including the comparison with various
+types of competitors.
 
-We provide this template as a default structure that we (the JASA Associate Editors of Reproducibility) think could be
-useful for many projects, either as is or with modifications by authors.
-However, the template is intended to be helpful and is by no means
-required of authors. Authors should consult [our reproducibility
-guide](https://jasa-acs.github.io/repro-guide) for details on what is
-required of reproducibility materials submitted with JASA revisions (not
-required upon initial submission).
+## Data
+All used data is freely available and made available through packages in the code.
 
-## Why is a template repository useful?
+## Code
+- folder ./code/ contains helper functions used by BCTM in setting up the model
+- folder ./nuts/ contains the NUTS code used for posterior inference. **Note that, currently, updates of the smoothing variances and results of the prior elicitation process for $\theta$ are hardcoded in many cases.**
+- folder ./rcpp/ contains `rcpp` source files for posteriors (up to a constant) and gradients
+- folder ./sims/ contains R code to reproduce all simulations and plots from the paper and the supplement
+- folder ./framingham/ contains R code to reproduce all models and plots for the Framingham heart study illustration
+- folder ./leukemia/ contains R code to reproduce all models and plots for the Leukemia lung cancer survival illustration
+- folder ./veteran/ contains R code to reproduce all models and plots for the Veteran illustration
 
-The purpose of this template repository is to provide a mechanism for
-author(s) to share their materials via a Git repository, hosted on a
-cloud-based repository manager such as GitHub or GitLab. This provides
-the following advantages for author(s):
+Used libraries are captured in the renv.lock file (after installing the `renv`package use `renv::init()`).
 
-1.  Analyses (including code, narrative text, output, plots, etc) can be
-    version controlled (or branched or forked) allowing original
-    author(s) to continue to develop the analyses or other data analysts
-    to build off the analyses. Also iterations and changes to the
-    analysis are then available via the Git commit history.
-2.  Materials are easily available to other researchers.
-3.  Preparing a repository also makes it easy for the JASA Associate
-    Editors for Reproducibility to copy the materials for a JASA article
-    into the JASA GitHub repository where the final paper products are stored
-    after publication (https://github.com/jasa-acs).
-
-## How does the process work?
-
-### Step 1
-
-Author(s) can create a public GitHub repository in their own GitHub account
-by using this template repository. This template contains a basic 
-skeletal structure to help authors structure their code and analyses for their 
-JASA publication. Creating a repository with the template can be done in the following way: 
-
-Click on the "Use this template" button for [this GitHub template repository](https://github.com/jasa-acs/repro-template). (You'll need to be signed in to a GitHub account in order to see the button.)
-
-![Click template button](https://docs.github.com/assets/cb-36544/images/help/repository/use-this-template-button.png)
-
-From there, author(s) can [follow these instructions](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template). However do not optionally select "**Include all branches**" as you do not need this for your own projects. 
+### Usage
+All code in sims/framingham/leukemia/veteran is self-contained and can be used by simply running the scripts.
 
 
-### Step 2
-
-The author(s) can then directly edit (or replace) the manuscript template files in their own GitHub repository. Author(s) can also add their own data, code, and other files as needed. 
-
-For guidance on getting started with git, we recommend the [Happy with git r](https://happygitwithr.com) tutorials.
+## Processed Files
+Folder ./processed_data/ contains all results used in the paper except for files that are larger than GitHub's limits.
 
 **Importantly, the authors should provide an overview of how to carry
 out the analyses presented in their manuscript in the `README.md` of their
