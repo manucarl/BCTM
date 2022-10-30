@@ -70,10 +70,6 @@ NUTS <- function(n_iter, xx, f, gr, ll, start, warmup = floor(n_iter/2),thin=1, 
   ranks <- xx$ranks
   pen_ident <- xx$pen_ident
   
-  # Smats <- vector("list", 2)
-  # n_pen_grpss <- xx$npen
-  # Ks_new <- vector("list", npen)
-  
   step_size <- nuts_settings$step_size
   
   
@@ -116,8 +112,6 @@ NUTS <- function(n_iter, xx, f, gr, ll, start, warmup = floor(n_iter/2),thin=1, 
     eps_out <- eps_bar <- H_bar <- NULL
   }
   
-  # xx <- as.environment(xx)
-  
 
   mbm <- microbenchmark::microbenchmark(
     "posterior" = {
@@ -130,11 +124,8 @@ NUTS <- function(n_iter, xx, f, gr, ll, start, warmup = floor(n_iter/2),thin=1, 
   j_out <-  rep(0, n_iter)
   
   
-  # message('')
-  # message(paste('Starting NUTS at', start))
   
   Ks_t <- Ks_f
-  # names(Ks_t) <- names(pen_ident)
   
   K_inds <- xx$K_inds
   labels <- xx$labels
@@ -149,22 +140,17 @@ NUTS <- function(n_iter, xx, f, gr, ll, start, warmup = floor(n_iter/2),thin=1, 
   log_liks <- log_posteriors <- rep(0, len=n_iter)
   tau2_out <- matrix(1, nrow=n_iter, ncol=n_pen_grps)
   colnames(tau2_out) <- unlist(  lapply(K_inds, function(x) paste0("tau2_", x)))
-  # which(eff_pen[1] == name_groups)
-  # lapply(  names(pen_ident))
-  # inds[[1]] <- 
+
   pb <- progress::progress_bar$new(format = "[:bar] :current/:total (:percent)", total = n_iter)
   pb$tick(0)
   
   tau2 <- rep(0, npen)
   
-  # inds <- 1:n_coef
-  # Ks <- vector(mode="list", length=n_tau)
   
   start <- Sys.time()
   
   for(iter in 1:n_iter){
     
-    # sourceCpp(paste0(sourcepath,"rcpp/gauss_hmc_update5.cpp"))
     beta_minus <- beta_plus <- beta_cur
     beta_out[iter,] <- M_sq*beta_cur 
     
@@ -185,7 +171,6 @@ NUTS <- function(n_iter, xx, f, gr, ll, start, warmup = floor(n_iter/2),thin=1, 
     
     while(s==1) {
       
-      #print(j)
       
       # choose a direction v
       v <- sample(c(1,-1), 1)
@@ -221,7 +206,6 @@ NUTS <- function(n_iter, xx, f, gr, ll, start, warmup = floor(n_iter/2),thin=1, 
       n <- n + temp$n
       s <- temp$s*check_nuts(beta_plus, beta_minus, r_plus, r_minus)
       
-      #print(paste0("s: ", s))
       j <- j+1
       
       if(!is.finite(s)) s <- 0
@@ -310,7 +294,6 @@ NUTS <- function(n_iter, xx, f, gr, ll, start, warmup = floor(n_iter/2),thin=1, 
     }
     
     
-    
     S <- as.matrix(bdiag(lapply(K_inds, function(x) Reduce("+", Ks_t[x]))))
     xx$S <- S
     
@@ -349,7 +332,11 @@ NUTS <- function(n_iter, xx, f, gr, ll, start, warmup = floor(n_iter/2),thin=1, 
        warmup = warmup, max_treedepth = max_td)
 }
 
-# log likelihoods (only used for calculation of ICs)
+#-----------------------------------------------------------------------------------------------------------------
+# likelihoods/densities/cdfs
+#-----------------------------------------------------------------------------------------------------------------
+
+#log likelihoods (only used for calculation of ICs)
 ll_gauss <- function(param, xx){
   bt <- param
   exp_ident <- xx$exp_ident+1
@@ -492,7 +479,6 @@ leapfrog_step = function(beta, r, step_size, gr, xx){
 build_tree <- function(beta, xx, r, log_u, v, j, step_size, H_prime, f, gr,
                       delta_max=1000, info = environment() ){
   
-  # print(diag(S))
   if(j==0){
     
     

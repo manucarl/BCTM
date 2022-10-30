@@ -12,7 +12,7 @@
 ##
 ## ---------------------------
 library(dplyr)
-# rm(list = ls())
+
 
 source("code/bctm_utils.R")
 source("code/bctm_design_funs2.R")
@@ -20,25 +20,21 @@ source("code/bctm_design.R")
 source("code/bctm_fun.R")
 
 source("code/nuts/nuts_utils.R")
-source("code/nuts/adnuts_helper.R")
 source("code/nuts/nuts.R")
+source("code/nuts/adnuts_helper.R")
 
-packages <- c("spBayesSurv", "survival", "BayesX", "scam", "Matrix", "Rcpp", "RcppArmadillo", "MCMCpack", "sf", "rgeos", "ggplot2", "s2")
+packages <- c("spBayesSurv", "survival", "BayesX", "scam", "Matrix", "Rcpp", "RcppArmadillo", "MCMCpack", "sf", "rgeos", "ggplot2","RhpcBLASctl", "loo")
 load_inst(packages)
+# 
+# omp_set_num_threads(1)
+# blas_set_num_threads(1)
 
-
-sourceCpp("code/rcpp/posterior_grad_xx2.cpp")
+sourceCpp("code/rcpp/posterior_grad_xx.cpp")
 
 # get data
 data("LeukSurv", package="spBayesSurv")
 data <- LeukSurv[order(LeukSurv$district), ]
 n <- nrow(data) 
-
-#get boundary file
-nwengland <- read.bnd(system.file("otherdata/nwengland.bnd", package = "spBayesSurv"))
-
-# construct map in graph format for neighbour matrix
-nmat <- bnd2gra(nwengland)
 
 # function that scales prediction variable according to the scaling in training data
 scale_pred <- function(x, var){
@@ -46,26 +42,38 @@ scale_pred <- function(x, var){
     attr(var, "scaled:scale")
 }
 
+# data$time <- scale(data$time)
+#get boundary file
+nwengland <- read.bnd(system.file("otherdata/nwengland.bnd", package = "spBayesSurv"))
+
+# construct map in graph format for neighbour matrix
+nmat <- bnd2gra(nwengland)
+
+# data <- data[data$cens == 0,]
+
+nmat_centroids <- get.centroids(nwengland)
+
 # scale for faster sampling
-data$age <- scale(data$age)
-data$wbc <- scale(data$wbc)
+data$age <- scale(data$age)#%>% as.vector
+data$wbc <- scale(data$wbc)#%>% as.vector
+data$tpi <- scale(data$tpi)# %>% as.vector
+data$sex[data$sex==0] <- -1
 
-# minimum-extreme-value distribution for proportional hazards
-family <- "mev"
+seed <- 1
+its <- 4000
 
 
-seed <- 123
-set.seed(seed)
-its <- 2000
-# proportional hazards model with spatial effect -----------------------------------------------------------------------------------------------
+object_ph_spat <- bctm(time ~hy_sm(time, data=data,  center=T, q = 20, add_to_diag=10e-6)+
+                         hx_lin(age) + hx_lin(sex)+ hx_lin(wbc) + hx_lin(tpi) +
+                         hx_spat(district, nmat=nmat, data),
+                       cens = as.logical(data$cens),
+                       family = "mev", data=data, iterations = its, intercept=F, 
+                       hyperparams=list(a=1, b=0.001), nuts_settings=list(adapt_delta = 0.95, max_treedepth=12), seed = seed)
+# save(object_ph_spat, file="processed_data/leukemia/leuk_ph_spat_cens_plot.RData")
 
-object_ph <- bctm(time ~ hy_sm(time,data=data,  center=T)+
-                    hx_spat(district, data=data, nmat=nmat)+
-                    hx_lin(age) +hx_lin(sex) + hx_lin(wbc) + hx_lin(tpi) , #cens = as.logical(data$cens),
-                  family = family, data=data, iterations = its, intercept=F, # remove intercept 
-                  hyperparams=list(a=1, b=0.001), nuts_settings=list(adapt_delta = 0.80, max_treedepth=10), seed = seed)
+load("processed_data/leukemia/leuk_ph_spat_cens_plot.RData")
 
-object <- object_ph
+object <- object_ph_spat
 
 # get model design matrix
 X <- object$X
@@ -85,15 +93,16 @@ exp_ident <- object$model$exp_ident
 # beta_tilde samples
 bt_samples <-  betas
 bt_samples[,exp_ident] <- exp(bt_samples[,exp_ident])
+bt <- object$beta_tilde
 
-# posterior mean
+# posterior means
 beta_tilde <- colMeans(bt_samples)
 
-
+# map regions
 nwenglandsp <- bnd2sp(nwengland)
 newenglandsf <-st_as_sf(nwenglandsp)
 
-label_inds <-object$model$label_inds
+label_inds <- object$model$label_inds
 
 
 
@@ -113,18 +122,18 @@ B0pred <- pred_B[[1]](list(time=time_grid))
 effsamples095 <- cbind(
   h0=B0pred,
   age = age_pred,
-  sex = 0,
+  sex = -1,
   wbc = wbc_pred,
-  tpi = quantile(LeukSurv$tpi, 0.99)
+  tpi = quantile(data$tpi, 0.95)
 ) %*% t(bt_samples[, which(label_inds != "hs(district)")]) 
 
 effsamples050 <- 
   cbind(
     B0pred,
     age = age_pred,
-    sex = 0,
+    sex = -1,
     wbc = wbc_pred,
-    tpi = quantile(LeukSurv$tpi, 0.5)
+    tpi = quantile(data$tpi, 0.5)
   ) %*% t(bt_samples[, which(label_inds != "hs(district)")])
 
 
@@ -132,9 +141,9 @@ effsamples005 <-
   cbind(
     h0=B0pred,
     age = age_pred,
-    sex = 0,
+    sex = -1,
     wbc = wbc_pred,
-    tpi = quantile(LeukSurv$tpi, 0.01)
+    tpi = quantile(data$tpi, 0.05)
   ) %*% t(bt_samples[, which(label_inds != "hs(district)")]) 
 
 effsamples005[1,] <- effsamples050[1,] <- effsamples095[1,] <- -Inf
@@ -187,7 +196,7 @@ p1
 library(viridis)
 p2 <- ggplot(data = newenglandsf) +
   theme_void() +
-  geom_sf(aes(fill = bt[label_inds == "hs(district)"])) +
+  geom_sf(aes(fill = c(bt[label_inds == "hs(district)"]))) +
   scale_fill_viridis(option = "A",
                      begin = 1,
                      end = 0.3) +

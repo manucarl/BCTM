@@ -66,10 +66,6 @@ NUTS <- function(n_iter, xx, f, gr, ll, start, warmup = floor(n_iter/2),thin=1, 
   
   Ks_f <- xx[["Ks_f"]]
   
- 
-  
-  
-  
   # functions for scale dependent updates
   posterior_u <- function(u, par, rank, K, theta) 0.5 * (1 - rank) * u - as.vector(t(par) %*% (K %*% par)) / (2 * exp(u)) - sqrt(exp(u) / theta)
   # 
@@ -200,19 +196,10 @@ NUTS <- function(n_iter, xx, f, gr, ll, start, warmup = floor(n_iter/2),thin=1, 
   
   K <- Ks[[1]] + Ks[[2]]
   
-  # 1) simulate R values of tau2 out of prior
-  # 2) simulate R beta vector conditional on tau2
-  # 3) determine fraction of examples where max(beta_j) > c for an estimate of the prob
-  
-  # number of simulations for prior elicitation
-  R <- 10000
-  # seed for prior elicitations
-  myseed <- 12
-  
 
 theta <- 0.0005154369
   
-  print(paste0("theta: ", theta))
+  print(paste0("hard-coded theta: ", theta))
   ## beta are the position parameters
   ## r are the momentum parameters
   beta_out <- matrix(0, nrow=n_iter, ncol=n_coef)

@@ -37,11 +37,11 @@ All used data is freely available and made available through packages in the cod
 Used libraries are captured in the renv.lock file (after installing the `renv`package use `renv::init()`).
 
 ### Usage
-All code in sims/framingham/leukemia/veteran is self-contained and can be used by simply running the scripts.
+All code in sims/framingham/leukemia/veteran is self-contained and can be used by simply running the scripts. Code can be used to reproduce the results in the paper and supplement, but do
 
 
 ## Processed Files
-Folder ./processed_data/ contains all results used in the paper except for files that are larger than GitHub's limits.
+Folder ./processed_data/ contains all results used in the paper except for files that are larger than GitHub's size limits.
 
 **Importantly, the authors should provide an overview of how to carry
 out the analyses presented in their manuscript in the `README.md` of their

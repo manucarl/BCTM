@@ -1,3 +1,17 @@
+## ---------------------------
+##
+## Script name: hyper_omega_beta.R
+##
+## Purpose of script: elicitates theta on basis of two precision matrices, a threshold c and probability alpha for a tensor spline
+##
+## Author: Manuel Carlan
+##
+## Date Created: 2022-6-5
+##
+## Email: mcarlan@uni-goettingen.de
+##
+## ---------------------------
+
 hyper_omega_beta <- function(K1, K2, ct = 0.1, alpha = 0.1, A,
                      omegaseq, omegaprob, R = 1000, myseed = 123,
                      thetaseq = NULL, type = "SD", truncate = 0.95)

@@ -1,5 +1,5 @@
 ##
-## Script name: nuts.R
+## Script name: nuts_omega_spat.R
 ##
 ## Purpose of script: implements the No-U-Turn sampler by Hoffmann and Gelman (2014) with dual averaging and mass matrix adaption for 
 ##                    Bayesian Conditional transformation models; imitates the output style of
@@ -7,7 +7,7 @@
 ##
 ## Author: Manuel Carlan
 ##
-## Date Created: 2020-10-7
+## Date Created: 2021-05-7
 ##
 ## Email: mcarlan@uni-goettingen.de
 ##
@@ -323,12 +323,7 @@ NUTS <- function(n_iter, xx, f, gr, ll, start, warmup = floor(n_iter/2),thin=1, 
     #---------------------------------------------------------------------------
     
     
-    # K_xy <- if(iter == 1)  (omega_start * Klist[[4]][[1]] + (1-omega_start) * Klist[[4]][[2]]) / start_tau2 else K_xy
-    
-    
-    
-    
-    # update tau2s and multiply with corresponding precision matrix
+    # update tau2swith omega weights as in Kneib et al. (2019
       i <- 1
       grp <- pen_ident[[i]] 
       par <- beta_out[iter, grp ]
@@ -358,8 +353,7 @@ NUTS <- function(n_iter, xx, f, gr, ll, start, warmup = floor(n_iter/2),thin=1, 
       omega_out[iter, i] <- omega <- omega_grid[omega_ind]
       K_iter[[i]] <- pre_Ks[[i]][[omega_ind]]/ tau2_xy
       
-      
-      #print(paste("omega: ", omega, "tau2: ", tau2_xy))
+      # update tau2s regularly
 i <- 3
       grp <- pen_ident[[i]] 
       par <- beta_out[iter, grp ]
@@ -368,7 +362,6 @@ i <- 3
       
       Ks_t[[i]] <- Ks_f[[i]]/ tau2
     
-#    print(paste0("tau2_re: ", tau2))
     
     
     S <- as.matrix(bdiag(list(K_iter[[1]], Ks_t[[3]])))

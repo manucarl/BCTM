@@ -63,7 +63,7 @@ object_te <- bctm(cholst ~  hyx_sm(cholst, age, data=data, q=c(10,10), add_to_di
 # Elapsed Time: 544.1 seconds (Sampling)
 # Elapsed Time: 968.6 seconds (Total)
 
-save(object_te, file="processed_data/fram_te_m10.RData")
+# save(object_te, file="processed_data/fram_te_m10.RData")
 load("processed_data/framingham/fram_te_m10.RData")
 
 object_te$IC

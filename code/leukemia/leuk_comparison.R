@@ -36,10 +36,8 @@ data("LeukSurv", package="spBayesSurv")
 data <- LeukSurv[order(LeukSurv$district), ]
 n <- nrow(data) 
 
-# data$time <- scale(data$time)
 #get boundary file
 nwengland <- read.bnd(system.file("otherdata/nwengland.bnd", package = "spBayesSurv"))
-data("LeukSurv", package="spBayesSurv")
 
 # construct map in graph format for neighbour matrix
 nmat <- bnd2gra(nwengland)
@@ -56,7 +54,7 @@ data$age <- scale(data$age) %>% as.vector
 data$sex[data$sex==0] <- -1
 
 seed <- 1
-its <- 2000
+its <- 4000
 
 
 #######################################################################################################
@@ -72,7 +70,7 @@ object_ph_cens <- bctm(time ~  hy_sm(time, data=data,  center=T, q = 20, add_to_
 
 # save(object_ph_cens, file="processed_data/leukemia/leuk_ph_cens.RData")
 load("processed_data/leukemia/leuk_ph_cens.RData")
-object_ph_cens$IC$WAIC1$estimates
+object_ph_cens$IC$WAIC1
 
 #######################################################################################################
 # PH model - mlt
@@ -99,19 +97,18 @@ object_ph_re <- bctm(time ~hy_sm(time, data=data,  center=T, q = 20, add_to_diag
 # save(object_ph_re, file="processed_data/leukemia/leuk_ph_re_cens.RData")
 load("processed_data/leukemia/leuk_ph_re_cens.RData")
 
-object_ph_re$IC$WAIC1$estimates
+object_ph_re$IC
 
 #######################################################################################################
 # PH model with spatial effect - bctm
 #######################################################################################################
 
-source("code/nuts/nuts_omega_spat_leuk_ph.R")
 
 object_ph_spat <- bctm(time ~hy_sm(time, data=data,  center=T, q = 20, add_to_diag=10e-6)+
                          hx_lin(age) + hx_lin(sex)+ hx_lin(wbc) + hx_lin(tpi) +
                          hx_spat(district, nmat=nmat, data),
                        cens = as.logical(data$cens),
-                       family = "mev", data=data, iterations = its, intercept=T, 
+                       family = "mev", data=data, iterations = its, intercept=F, 
                        hyperparams=list(a=1, b=0.001), nuts_settings=list(adapt_delta = 0.95, max_treedepth=12), seed = seed)
 
 # save(object_ph_spat, file="processed_data/leukemia/leuk_ph_spat_cens.RData")
@@ -121,31 +118,33 @@ object_ph_spat$IC$WAIC1$estimates
 
 
 #######################################################################################################
-# NPH model with spatial effect - bctm
+# NPH model -bctm
 #######################################################################################################
 # library(splineDesign)
 
-source("code/nuts/nuts_omega_flex.R")
+source("code/nuts/nuts_omega.R")
 
 object_nph <- bctm(time ~ hyx_sm(time, age, data=data,  center=T, q = c(10,10), add_to_diag=10e-6)+
                      hx_lin(sex)+ hx_lin(wbc) + hx_lin(tpi) ,
                    cens = as.logical(data$cens),
                    family = "mev", data=data, iterations = its, intercept=T, 
-                   hyperparams=list(a=1, b=0.001), nuts_settings=list(adapt_delta = 0.95, max_treedepth=8), seed = seed)
+                   hyperparams=list(a=1, b=0.001), nuts_settings=list(adapt_delta = 0.95, max_treedepth=12), seed = seed)
 
 # save(object_nph, file="processed_data/leukemia/leuk_nph_cens.RData")
 load("processed_data/leukemia/leuk_nph_cens.RData")
 object_nph$IC$WAIC1$estimates
 
-
+#######################################################################################################
+# NPH model with spatial effect - bctm
+#######################################################################################################
 
 source("code/nuts/nuts_omega_spat.R")
 object_nph_spat <- bctm(time ~ hyx_sm(time, age, data=data,  center=T, q = c(10,10), add_to_diag=10e-6)+
                           hx_lin(sex)+ hx_lin(wbc) + hx_lin(tpi) +
                           hx_spat(district, nmat=nmat, data),
                         cens = as.logical(data$cens),
-                        family = "mev", data=data, iterations = its, intercept=T, 
-                        hyperparams=list(a=1, b=0.001), nuts_settings=list(adapt_delta = 0.95, max_treedepth=8), seed = seed)
+                        family = "mev", data=data, iterations = its, intercept=F, 
+                        hyperparams=list(a=1, b=0.001), nuts_settings=list(adapt_delta = 0.95, max_treedepth=12), seed = seed)
 
 
 # save(object_nph_spat, file="processed_data/leukemia/leuk_nph_spat_cens.RData")

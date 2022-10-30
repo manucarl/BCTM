@@ -4,6 +4,7 @@
 ## Purpose of script: implements the No-U-Turn sampler by Hoffmann and Gelman (2014) with dual averaging and mass matrix adaption for 
 ##                    Bayesian Conditional transformation models; imitates the output style of
 #                     rstan (Stan Development Team, 2020) and uses mass matrix adaptation from adnuts (Monnahan and Kristensen, 2018)
+##                    Update of smoothing variances via Gibbs sampling
 ##
 ## Author: Manuel Carlan
 ##
@@ -59,7 +60,7 @@ NUTS <- function(n_iter, xx, f, gr, ll, start, warmup = floor(n_iter/2),thin=1, 
   
   
   n_coef <- xx[["n_coef"]]
-  n_pen_grps <- xx[["npen"]]
+  npen_grps <- xx[["npen"]]
   
   
   Ks_f <- xx[["Ks_f"]]
@@ -71,10 +72,7 @@ NUTS <- function(n_iter, xx, f, gr, ll, start, warmup = floor(n_iter/2),thin=1, 
   
   ranks <- xx$ranks
   pen_ident <- xx$pen_ident
-  n_pen <- length(Klist[startsWith(names(Klist), "hyx_sm")])
-  # Smats <- vector("list", 2)
-  # n_pen_grpss <- xx$npen
-  # Ks_new <- vector("list", npen)
+  npen <- length(Klist[startsWith(names(Klist), "hyx_sm")])
   
   step_size <- nuts_settings$step_size
   
@@ -110,7 +108,7 @@ NUTS <- function(n_iter, xx, f, gr, ll, start, warmup = floor(n_iter/2),thin=1, 
   pre_Ks <- lapply(Klist[startsWith(names(Klist), "hyx_sm")], function(K) lapply(omega_grid, function(omega) K[[1]]*omega + (1 - omega) * K[[2]]))
   K_determinants <- lapply(Klist[startsWith(names(Klist), "hyx_sm")], function(K) lapply(omega_grid, function(omega) ddet.mp(K[[1]]*omega + (1 - omega) * K[[2]])))
   
-  K_iter <- vector("list", n_pen)
+  K_iter <- vector("list", npen)
   ## how many steps were taken at each iteration, useful for tuning
   # eps_start <- 0.01
   
@@ -155,7 +153,6 @@ NUTS <- function(n_iter, xx, f, gr, ll, start, warmup = floor(n_iter/2),thin=1, 
   
   K_inds <- xx$K_inds
   labels <- xx$labels
-  npen <- xx$npen
   
   
   ## beta are the position parameters
@@ -164,21 +161,17 @@ NUTS <- function(n_iter, xx, f, gr, ll, start, warmup = floor(n_iter/2),thin=1, 
   colnames(beta_out) <- colnames(xx$X)
   
   log_liks <- log_posteriors <- rep(0, len=n_iter)
-  tau2_out <- matrix(1, nrow=n_iter, ncol=n_pen)
+  tau2_out <- matrix(1, nrow=n_iter, ncol=npen)
   # colnames(tau2_out) <- unlist(  lapply(Ks, function(x) paste0("tau2_", x)))
-  colnames(tau2_out) <-  paste0("tau2_", 1:n_pen)
+  colnames(tau2_out) <-  paste0("tau2_", 1:npen)
   
-  omega_out <- matrix(0.5, nrow=n_iter, ncol=n_pen)
-  colnames(omega_out) <-  paste0("omega_out_", 1:n_pen)
+  omega_out <- matrix(0.5, nrow=n_iter, ncol=npen)
+  colnames(omega_out) <-  paste0("omega_out_", 1:npen)
   omega_start <- 0.5
-  # which(eff_pen[1] == name_groups)
-  # lapply(  names(pen_ident))
-  # inds[[1]] <- 
+
   pb <- progress::progress_bar$new(format = "[:bar] :current/:total (:percent)", total = n_iter)
   pb$tick(0)
   
-  # inds <- 1:n_coef
-  # Ks <- vector(mode="list", length=n_tau)
   
   start <- Sys.time()
   
@@ -317,14 +310,8 @@ NUTS <- function(n_iter, xx, f, gr, ll, start, warmup = floor(n_iter/2),thin=1, 
     }
     #---------------------------------------------------------------------------
     
-    
-    # K_xy <- if(iter == 1)  (omega_start * Klist[[4]][[1]] + (1-omega_start) * Klist[[4]][[2]]) / start_tau2 else K_xy
-    
-  
-    
-    
-    # update tau2s and multiply with corresponding precision matrix
-    for(i in 1:n_pen){
+    # update tau2s for bivariate tensor spline with omega weights as shown in Kneib et al. (2019)
+    for(i in 1:npen){
       grp <- pen_ident[[i]] 
       par <- beta_out[iter, grp ]
       
@@ -333,16 +320,10 @@ NUTS <- function(n_iter, xx, f, gr, ll, start, warmup = floor(n_iter/2),thin=1, 
       
       tau2_out[iter,i] <- tau2_xy <-  rinvgamma(1, hyper_a + 0.5*sum_ranks[[i]], hyper_b + as.matrix(0.5*t(par)%*%(omega*Klist[[i]][[1]] +  (1-omega)*Klist[[i]][[2]])%*%par))
       
- 
-      
-  
-      
+      # upo
       omega_probs <- sapply(1:n_omega, function(w) 0.5*(K_determinants[[i]][[w]]) - 1/(2*tau2_xy) * (t(par)%*% (pre_Ks[[i]][[w]] %*% par)))  #- log(n_omega))
-      
       omega_probs <- exp(omega_probs)
-      
       omega_probs <- omega_probs - max(omega_probs)
-      
       
       
       min_prob <- min(omega_probs)
@@ -353,13 +334,7 @@ NUTS <- function(n_iter, xx, f, gr, ll, start, warmup = floor(n_iter/2),thin=1, 
       omega_out[iter, i] <- omega <- omega_grid[omega_ind]
       K_iter[[i]] <- pre_Ks[[i]][[omega_ind]]/ tau2_xy
       
-      
-     # print(paste("omega: ", omega, "tau2: ", tau2_xy))
-      
-      
     }
-    
-    
     
     S <- as.matrix(bdiag(c(K_iter)))
     xx$S <- S

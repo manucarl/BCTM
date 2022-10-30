@@ -1,3 +1,18 @@
+## ---------------------------
+##
+## Script name: bctm_design_funs2.R
+##
+## Purpose of script: contains functions that construct various design matrices used in BCTM
+##
+## Author: Manuel Carlan
+##
+## Date Created: 2022-6-5
+##
+## Email: mcarlan@uni-goettingen.de
+##
+## ---------------------------
+
+
 library(splines)
 
 # nonlinear monotone transformations ------------------------------------------------------------------------------------------
@@ -90,7 +105,7 @@ hyx_sm <- function(..., q = c(10,10) , data, knots = list(NULL, NULL),
 
 
 
-
+# constructs monotonic tensor spline in direction of y as in package "scam"
 te.BD_pya <- function(y=data[,y],x=data[,x], knotsy, knotsx,  q1, q2, center=T){
   X1 <- splineDesign(knotsy, y, ord = 4, derivs=1, outer.ok=T)
   X2 <- splineDesign(knotsx, x, ord =4, outer.ok=T)

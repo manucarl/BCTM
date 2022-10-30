@@ -19,7 +19,7 @@ library(posterior)
 ##########################################################################################################
 # get Rhat
 ##########################################################################################################
-load("processed_data/framingham/fram_te_rhat_runs.RData")
+load("processed_data/framingham/rhat_runs/fram_te_rhat_runs.RData")
 mcmc_objects <- lapply(lapply(lapply(object_te, "[[", "samples"), "[[", "beta"), as.mcmc)
 combinedchains  <- mcmc.list(mcmc_objects[[1]], mcmc_objects[[2]], mcmc_objects[[3]], mcmc_objects[[4]])
 
@@ -30,7 +30,7 @@ mean(rhats)
 var(rhats)
 
 
-load("processed_data/framingham/fram_te_re_rhat_runs.RData")
+load("processed_data/framingham/rhat_runs/fram_te_re_rhat_runs.RData")
 mcmc_objects <- lapply(lapply(lapply(object_te, "[[", "samples"), "[[", "beta"), as.mcmc)
 combinedchains  <- mcmc.list(mcmc_objects[[1]], mcmc_objects[[2]], mcmc_objects[[3]], mcmc_objects[[4]])
 
@@ -41,7 +41,7 @@ mean(rhats)
 var(rhats)
 
 
-load("processed_data/framingham/fram_te_sd_rhat_runs.RData")
+load("processed_data/framingham/rhat_runs/fram_te_sd_rhat_runs.RData")
 mcmc_objects <- lapply(lapply(lapply(object_te, "[[", "samples"), "[[", "beta"), as.mcmc)
 combinedchains  <- mcmc.list(mcmc_objects[[1]], mcmc_objects[[2]], mcmc_objects[[3]], mcmc_objects[[4]])
 
@@ -52,7 +52,7 @@ mean(rhats)
 var(rhats)
 
 
-load("processed_data/framingham/fram_te_re_sd_rhat_runs.RData")
+load("processed_data/framingham/rhat_runs/fram_te_re_sd_rhat_runs.RData")
 mcmc_objects <- lapply(lapply(lapply(object_te, "[[", "samples"), "[[", "beta"), as.mcmc)
 combinedchains  <- mcmc.list(mcmc_objects[[1]], mcmc_objects[[2]], mcmc_objects[[3]], mcmc_objects[[4]])
 
