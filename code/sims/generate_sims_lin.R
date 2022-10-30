@@ -18,7 +18,7 @@ load_inst_packages(packages)
 # blas_set_num_threads(1)
 
 # code provided by hothorn et al. (2017)
-source("code/hothorn/simfuns.R")
+source("code/mlt_sims/simfuns.R")
 
 # posteriors and gradients in rcpp
 sourceCpp("code/rcpp/posterior_grad_xx2.cpp")

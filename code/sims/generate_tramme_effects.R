@@ -69,15 +69,7 @@ eff_sim <- function(seed){
   
   names(result) <- paste0("f", 1:4)
   
-  # print(result)
-  # names(result) <- c("trafo2", "trafo3", "trafo4")
   bind_rows(result, .id="trafo")
-  # result
-  # list(trafo1=gg_trafo2, trafo2=gg_trafo3, trafo3=gg_trafo4)
-  
-  #list(trafo1=gg_trafo1, trafo2=gg_trafo2, trafo3=gg_trafo3, trafo4=gg_trafo4)
-  
-  
 }
 
 #no of replications

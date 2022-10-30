@@ -12,7 +12,7 @@ load_inst_packages(packages)
 
 
 # code provided by hothorn et al. (2017)
-source("code/hothorn/simfuns.R")
+source("code/mlt_sims/simfuns.R")
 
 
 sourceCpp("code/rcpp/posterior_grad_xx2.cpp")
