@@ -1,0 +1,38 @@
+\begin{thebibliography}{xx}
+
+\harvarditem{Gelman \harvardand\ Rubin}{1992}{gelman1992inference}
+Gelman, A. \harvardand\ Rubin, D.~B.  \harvardyearleft 1992\harvardyearright .
+\newblock Inference from iterative simulation using multiple sequences, {\em
+  Statistical science} {\bf 7}(4):~457--472.
+
+\harvarditem{Hanson \harvardand\ Yang}{2007}{hanson2007bayesian}
+Hanson, T. \harvardand\ Yang, M.  \harvardyearleft 2007\harvardyearright .
+\newblock Bayesian semiparametric proportional odds models, {\em Biometrics}
+  {\bf 63}(1):~88--95.
+
+\harvarditem{H\"{o}llig \harvardand\ H\"{o}rner}{2013}{HoeHoe2013}
+H\"{o}llig, K. \harvardand\ H\"{o}rner, J.  \harvardyearleft
+  2013\harvardyearright .
+\newblock {\em Approximation and Modeling with B-Splines}, Society for
+  Industrial and Applied Mathematics, USA.
+
+\harvarditem[Plummer et~al.]{Plummer, Best, Cowles \harvardand\
+  Vines}{2006}{coda}
+Plummer, M., Best, N., Cowles, K. \harvardand\ Vines, K.  \harvardyearleft
+  2006\harvardyearright .
+\newblock {CODA}: Convergence diagnosis and output analysis for {MCMC}, {\em R
+  News} {\bf 6}(1):~7--11.
+\newline\harvardurl{https://journal.r-project.org/archive/}
+
+\harvarditem{Prentice}{1973}{prentice1973exponential}
+Prentice, R.~L.  \harvardyearleft 1973\harvardyearright .
+\newblock Exponential survivals with censoring and explanatory variables, {\em
+  Biometrika} {\bf 60}(2):~279--288.
+
+\harvarditem[Zhou et~al.]{Zhou, Hanson \harvardand\ Zhang}{2020}{spbayessurv}
+Zhou, H., Hanson, T. \harvardand\ Zhang, J.  \harvardyearleft
+  2020\harvardyearright .
+\newblock {spBayesSurv}: Fitting {B}ayesian spatial survival models using {R},
+  {\em Journal of Statistical Software} {\bf 92}(9):~1--33.
+
+\end{thebibliography}

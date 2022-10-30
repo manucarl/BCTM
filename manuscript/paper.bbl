@@ -1,0 +1,324 @@
+\begin{thebibliography}{xx}
+
+\harvarditem[Andrinopoulou et~al.]{Andrinopoulou, Eilers, Takkenberg
+  \harvardand\ Rizopoulos}{2018}{andrinopoulou2018improved}
+Andrinopoulou, E.-R., Eilers, P.~H., Takkenberg, J.~J. \harvardand\ Rizopoulos,
+  D.  \harvardyearleft 2018\harvardyearright .
+\newblock Improved dynamic predictions from joint models of longitudinal and
+  survival data with time-varying effects using {P}-splines, {\em Biometrics}
+  {\bf 74}(2):~685--693.
+
+\harvarditem{Betancourt}{2017}{betancourt2017conceptual}
+Betancourt, M.  \harvardyearleft 2017\harvardyearright .
+\newblock Conceptual intro to {H}amiltonian {M}onte {C}arlo, {\em
+  arXiv:1701.02434} .
+
+\harvarditem{Box \harvardand\ Cox}{1964}{box1964analysis}
+Box, G.~E. \harvardand\ Cox, D.~R.  \harvardyearleft 1964\harvardyearright .
+\newblock An analysis of transformations, {\em Journal of the Royal Statistical
+  Society: Series B (statistical methodology)} {\bf 26}(2):~211--243.
+
+\harvarditem[Cheng et~al.]{Cheng, Wei \harvardand\
+  Ying}{1995}{cheng1995analysis}
+Cheng, S., Wei, L. \harvardand\ Ying, Z.  \harvardyearleft
+  1995\harvardyearright .
+\newblock Analysis of transformation models with censored data, {\em
+  Biometrika} {\bf 82}(4):~835--845.
+
+\harvarditem[Chernozhukov et~al.]{Chernozhukov, Fern{\'a}ndez-Val \harvardand\
+  Melly}{2013}{chernozhukov2013inference}
+Chernozhukov, V., Fern{\'a}ndez-Val, I. \harvardand\ Melly, B.
+  \harvardyearleft 2013\harvardyearright .
+\newblock Inference on counterfactual distributions, {\em Econometrica} {\bf
+  81}(6):~2205--2268.
+
+\harvarditem{Eddelbuettel \harvardand\ Balamuta}{2017}{Rcpp}
+Eddelbuettel, D. \harvardand\ Balamuta, J.~J.  \harvardyearleft
+  2017\harvardyearright .
+\newblock {Extending \textit{R} with \textit{C++}: A Brief Introduction to
+  \textit{Rcpp}}, {\em PeerJ Preprints} {\bf 5}:~e3188v1.
+
+\harvarditem{Gneiting}{2011}{gneiting2011quantiles}
+Gneiting, T.  \harvardyearleft 2011\harvardyearright .
+\newblock Quantiles as optimal point forecasts, {\em International Journal of
+  forecasting} {\bf 27}(2):~197--207.
+
+\harvarditem{Hastie \harvardand\ Tibshirani}{1990}{hastie1990generalized}
+Hastie, T.~J. \harvardand\ Tibshirani, R.~J.  \harvardyearleft
+  1990\harvardyearright .
+\newblock {\em Generalized additive models}, Vol.~43, CRC press.
+
+\harvarditem[Henderson et~al.]{Henderson, Shimakura \harvardand\
+  Gorst}{2002}{henderson2002modeling}
+Henderson, R., Shimakura, S. \harvardand\ Gorst, D.  \harvardyearleft
+  2002\harvardyearright .
+\newblock Modeling spatial variation in leukemia survival data, {\em Journal of
+  the American Statistical Association} {\bf 97}(460):~965--972.
+
+\harvarditem{Hoffman \harvardand\ Gelman}{2014}{hoffman2014no}
+Hoffman, M.~D. \harvardand\ Gelman, A.  \harvardyearleft 2014\harvardyearright
+  .
+\newblock The {N}o-{U}-{T}urn {S}ampler: adaptively setting path lengths in
+  {H}amiltonian {M}onte {C}arlo., {\em Journal of Machine Learning Research}
+  {\bf 15}(1):~1593--1623.
+
+\harvarditem{Horowitz \harvardand\ Lee}{2005}{horowitz2005nonparametric}
+Horowitz, J.~L. \harvardand\ Lee, S.  \harvardyearleft 2005\harvardyearright .
+\newblock Nonparametric estimation of an additive quantile regression model,
+  {\em Journal of the American Statistical Association} {\bf
+  100}(472):~1238--1249.
+
+\harvarditem{Hothorn}{2017}{hothorn2017package}
+Hothorn, T.  \harvardyearleft 2017\harvardyearright .
+\newblock mlt: Most likely transformations. r package vignette version 0.2-0.
+
+\harvarditem{Hothorn}{2022}{tram}
+Hothorn, T.  \harvardyearleft 2022\harvardyearright .
+\newblock tram: Transformation models. {R} package vignette version 0.7-0.
+
+\harvarditem[Hothorn et~al.]{Hothorn, Kneib \harvardand\
+  B{\"u}hlmann}{2014}{hothorn2014}
+Hothorn, T., Kneib, T. \harvardand\ B{\"u}hlmann, P.  \harvardyearleft
+  2014\harvardyearright .
+\newblock Conditional transformation models, {\em Journal of the Royal
+  Statistical Society: Series B (Statistical Methodology)} {\bf 76}(1):~3--27.
+
+\harvarditem[Hothorn et~al.]{Hothorn, M{\"o}st \harvardand\
+  B{\"u}hlmann}{2018}{hothorn2018}
+Hothorn, T., M{\"o}st, L. \harvardand\ B{\"u}hlmann, P.  \harvardyearleft
+  2018\harvardyearright .
+\newblock Most likely transformations, {\em Scandinavian Journal of Statistics}
+  {\bf 45}(1):~110--134.
+
+\harvarditem{Hothorn \harvardand\ Zeileis}{2021}{HotZei2021}
+Hothorn, T. \harvardand\ Zeileis, A.  \harvardyearleft 2021\harvardyearright .
+\newblock Predictive distribution modeling using transformation forests, {\em
+  Journal of Computational and Graphical Statistics} {\bf 30}(4):~1181--1196.
+
+\harvarditem[James et~al.]{James, Harrell \harvardand\
+  Shepherd}{2021}{james2021bayesian}
+James, N.~T., Harrell, F.~E. \harvardand\ Shepherd, B.~E.  \harvardyearleft
+  2021\harvardyearright .
+\newblock Bayesian cumulative probability models for continuous and mixed
+  outcomes, {\em arXiv:2102.00330} .
+
+\harvarditem{Klein \harvardand\ Kneib}{2016}{KleKne2016}
+Klein, N. \harvardand\ Kneib, T.  \harvardyearleft 2016\harvardyearright .
+\newblock Scale-dependent priors for variance parameters in structured additive
+  distributional regression, {\em Bayesian Analysis} {\bf 11}(4):~1071--1106.
+
+\harvarditem{Klein, Kneib, Klasen \harvardand\ Lang}{2015}{KleKneKlaLan2015}
+Klein, N., Kneib, T., Klasen, S. \harvardand\ Lang, S.  \harvardyearleft
+  2015\harvardyearright .
+\newblock Bayesian structured additive distributional regression for
+  multivariate responses, {\em Journal of the Royal Statistical Society. Series
+  C: Applied Statistics} {\bf 64}(4):~569--591.
+
+\harvarditem{Klein, Kneib, Lang, Sohn et~al.}{2015}{klein2015bayesian}
+Klein, N., Kneib, T., Lang, S., Sohn, A. et~al.  \harvardyearleft
+  2015\harvardyearright .
+\newblock Bayesian structured additive distributional regression with an
+  application to regional income inequality in {G}ermany, {\em The Annals of
+  Applied Statistics} {\bf 9}(2):~1024--1052.
+
+\harvarditem[Kneib et~al.]{Kneib, Klein, Lang \harvardand\
+  Umlauf}{2019}{kneib2019modular}
+Kneib, T., Klein, N., Lang, S. \harvardand\ Umlauf, N.  \harvardyearleft
+  2019\harvardyearright .
+\newblock Modular regression-a lego system for building structured additive
+  distributional regression models with tensor product interactions, {\em Test}
+  {\bf 28}(1):~1--39.
+
+\harvarditem[Kneib et~al.]{Kneib, Silbersdorff \harvardand\
+  Säfken}{2022}{Kneib2022}
+Kneib, T., Silbersdorff, A. \harvardand\ Säfken, B.  \harvardyearleft
+  2022\harvardyearright .
+\newblock Rage against the mean - {A} review of distributional regression
+  approaches, {\em Econometrics and Statistics} .
+
+\harvarditem{Koenker \harvardand\ Bassett}{1978}{KoeBas1978}
+Koenker, R. \harvardand\ Bassett, G.  \harvardyearleft 1978\harvardyearright .
+\newblock Regression quantiles, {\em Econometrica} {\bf 46}:~33--50.
+
+\harvarditem{Laio \harvardand\ Tamea}{2007}{laio2007verification}
+Laio, F. \harvardand\ Tamea, S.  \harvardyearleft 2007\harvardyearright .
+\newblock Verification tools for probabilistic forecasts of continuous
+  hydrological variables, {\em Hydrology and Earth System Sciences} {\bf
+  11}(4):~1267--1277.
+
+\harvarditem{Lang \harvardand\ Brezger}{2004}{lang2004bayesian}
+Lang, S. \harvardand\ Brezger, A.  \harvardyearleft 2004\harvardyearright .
+\newblock Bayesian {P}-splines, {\em Journal of Computational and Graphical
+  Statistics} {\bf 13}(1):~183--212.
+
+\harvarditem[Linton et~al.]{Linton, Sperlich, Van~Keilegom
+  et~al.}{2008}{linton2008}
+Linton, O., Sperlich, S., Van~Keilegom, I. et~al.  \harvardyearleft
+  2008\harvardyearright .
+\newblock Estimation of a semiparametric transformation model, {\em The Annals
+  of Statistics} {\bf 36}(2):~686--718.
+
+\harvarditem{Mallick \harvardand\ Walker}{2003}{mallick2003bayesian}
+Mallick, B.~K. \harvardand\ Walker, S.  \harvardyearleft 2003\harvardyearright
+  .
+\newblock A {B}ayesian semiparametric transformation model incorporating
+  frailties, {\em Journal of Statistical Planning and Inference} {\bf
+  112}(1-2):~159--174.
+
+\harvarditem{McKay~Curtis \harvardand\ Ghosh}{2011}{mckay2011variable}
+McKay~Curtis, S. \harvardand\ Ghosh, S.~K.  \harvardyearleft
+  2011\harvardyearright .
+\newblock A variable selection approach to monotonic regression with
+  {B}ernstein polynomials, {\em Journal of Applied Statistics} {\bf
+  38}(5):~961--976.
+
+\harvarditem[Michaelis et~al.]{Michaelis, Klein \harvardand\
+  Kneib}{2018}{MicKleKne2018}
+Michaelis, P., Klein, N. \harvardand\ Kneib, T.  \harvardyearleft
+  2018\harvardyearright .
+\newblock Bayesian multivariate distributional regression with skewed responses
+  and skewed random effects, {\em Journal of Computational and Graphical
+  Statistics} {\bf 27}(3):~602--611.
+
+\harvarditem{Monnahan \harvardand\ Kristensen}{2018}{adnuts}
+Monnahan, C.~C. \harvardand\ Kristensen, K.  \harvardyearleft
+  2018\harvardyearright .
+\newblock No-{U}-{T}urn {S}ampling for fast {B}ayesian inference in {ADMB} and
+  {TMB}: Introducing the adnuts and tmbstan {R} packages., {\em PLoS ONE} {\bf
+  13}(5):~e0197954.
+
+\harvarditem{M{\"o}st}{2015}{most2015conditional}
+M{\"o}st, L.  \harvardyearleft 2015\harvardyearright .
+\newblock {\em Conditional Transformation Models-Interpretable Parametrisations
+  and Censoring}, Verlag Dr. Hut.
+
+\harvarditem{Neal et~al.}{2011}{neal2011mcmc}
+Neal, R.~M. et~al.  \harvardyearleft 2011\harvardyearright .
+\newblock {MCMC} using {H}amiltonian dynamics, {\em in} S.~Brooks, A.~Gelman,
+  G.~Jones \harvardand\ X.-L. Meng (eds), {\em Handbook of Markov chain Monte
+  Carlo}, 1st edn, Chapman \& Hall/CRC, New York, chapter~5, pp.~133--162.
+
+\harvarditem{Nelder \harvardand\ Wedderburn}{1972}{nelder1972generalized}
+Nelder, J.~A. \harvardand\ Wedderburn, R.~W.  \harvardyearleft
+  1972\harvardyearright .
+\newblock Generalized linear models, {\em Journal of the Royal Statistical
+  Society: Series A (General)} {\bf 135}(3):~370--384.
+
+\harvarditem{Nesterov}{2009}{Nesterov2009}
+Nesterov, Y.  \harvardyearleft 2009\harvardyearright .
+\newblock Primal-dual subgradient methods for convex problems, {\em
+  Mathematical programming} {\bf 120}(1):~221--259.
+
+\harvarditem[Papaspiliopoulos et~al.]{Papaspiliopoulos, Roberts \harvardand\
+  Sk{\"o}ld}{2007}{papaspiliopoulos2007general}
+Papaspiliopoulos, O., Roberts, G.~O. \harvardand\ Sk{\"o}ld, M.
+  \harvardyearleft 2007\harvardyearright .
+\newblock A general framework for the parametrization of hierarchical models,
+  {\em Statistical Science} {\bf 22}(1):~59--73.
+
+\harvarditem{Pericchi}{1981}{pericchi1981bayesian}
+Pericchi, L.  \harvardyearleft 1981\harvardyearright .
+\newblock A {B}ayesian approach to transformations to normality, {\em
+  Biometrika} {\bf 68}:~35--43.
+
+\harvarditem{Politis}{2013}{politis2013}
+Politis, D.~N.  \harvardyearleft 2013\harvardyearright .
+\newblock Model-free model-fitting and predictive distributions, {\em Test}
+  {\bf 22}(2):~183--221.
+
+\harvarditem{Pya}{2010}{pya2010additive}
+Pya, N.  \harvardyearleft 2010\harvardyearright .
+\newblock {\em Additive models with shape constraints}, PhD thesis, University
+  of Bath.
+
+\harvarditem{Pya \harvardand\ Wood}{2015}{pyawood}
+Pya, N. \harvardand\ Wood, S.~N.  \harvardyearleft 2015\harvardyearright .
+\newblock Shape constrained additive models, {\em Statistics and Computing}
+  {\bf 25}(3):~543--559.
+
+\harvarditem{{R Core Team}}{2020}{Rlang}
+{R Core Team}  \harvardyearleft 2020\harvardyearright .
+\newblock {\em R: A Language and Environment for Statistical Computing}, R
+  Foundation for Statistical Computing, Vienna, Austria.
+
+\harvarditem{Rigby \harvardand\ Stasinopoulos}{2005}{rigby2005}
+Rigby, R.~A. \harvardand\ Stasinopoulos, D.~M.  \harvardyearleft
+  2005\harvardyearright .
+\newblock Generalized additive models for location, scale and shape, {\em
+  Journal of the Royal Statistical Society: Series C (Applied Statistics)} {\bf
+  54}(3):~507--554.
+
+\harvarditem{Rue \harvardand\ Held}{2005}{rue2005gaussian}
+Rue, H. \harvardand\ Held, L.  \harvardyearleft 2005\harvardyearright .
+\newblock {\em Gaussian Markov Random Fields: Theory and Applications}, CRC.
+
+\harvarditem{Song \harvardand\ Lu}{2012}{song2012semiparametric}
+Song, X.-Y. \harvardand\ Lu, Z.-H.  \harvardyearleft 2012\harvardyearright .
+\newblock Semiparametric transformation models with {B}ayesian {P}-splines,
+  {\em Statistics and Computing} {\bf 22}(5):~1085--1098.
+
+\harvarditem[Spiegelhalter et~al.]{Spiegelhalter, Best, Carlin \harvardand\ Van
+  Der~Linde}{2002}{spiegelhalter2002}
+Spiegelhalter, D.~J., Best, N.~G., Carlin, B.~P. \harvardand\ Van Der~Linde, A.
+   \harvardyearleft 2002\harvardyearright .
+\newblock Bayesian measures of model complexity and fit, {\em Journal of the
+  Royal Statistical Society: Series B (Statistical Methodology)} {\bf
+  64}(4):~583--639.
+
+\harvarditem{Tam{\'a}si \harvardand\ Hothorn}{2022}{tamasi2022tramme}
+Tam{\'a}si, B. \harvardand\ Hothorn, T.  \harvardyearleft 2022\harvardyearright
+  .
+\newblock tram{ME}: Mixed-effects transformation models using template model
+  builder, {\em R Journal} pp.~Epub--ahead.
+
+\harvarditem[Tang et~al.]{Tang, Wu \harvardand\
+  Chen}{2018}{tang2018semiparametric}
+Tang, N., Wu, Y. \harvardand\ Chen, D.  \harvardyearleft 2018\harvardyearright
+  .
+\newblock Semiparametric {B}ayesian analysis of transformation linear mixed
+  models, {\em Journal of Multivariate Analysis} {\bf 166}:~225--240.
+
+\harvarditem[Umlauf et~al.]{Umlauf, Klein \harvardand\
+  Zeileis}{2018}{umlauf2018bamlss}
+Umlauf, N., Klein, N. \harvardand\ Zeileis, A.  \harvardyearleft
+  2018\harvardyearright .
+\newblock {BAMLSS}: Bayesian additive models for location, scale, and shape
+  (and beyond), {\em Journal of Computational and Graphical Statistics} {\bf
+  27}:~612--627.
+
+\harvarditem[Waldmann et~al.]{Waldmann, Kneib, Yue, Lang \harvardand\
+  Flexeder}{2013}{waldmann2013bayesian}
+Waldmann, E., Kneib, T., Yue, Y.~R., Lang, S. \harvardand\ Flexeder, C.
+  \harvardyearleft 2013\harvardyearright .
+\newblock Bayesian semiparametric additive quantile regression, {\em
+  Statistical Modelling} {\bf 13}(3):~223--252.
+
+\harvarditem{Walker \harvardand\ Mallick}{1999}{walker1999bayesian}
+Walker, S. \harvardand\ Mallick, B.~K.  \harvardyearleft 1999\harvardyearright
+  .
+\newblock A {B}ayesian semiparametric accelerated failure time model, {\em
+  Biometrics} {\bf 55}(2):~477--483.
+
+\harvarditem{Watanabe}{2010}{watanabe2010}
+Watanabe, S.  \harvardyearleft 2010\harvardyearright .
+\newblock Asymptotic equivalence of {B}ayes cross validation and widely
+  applicable information criterion in singular learning theory, {\em Journal of
+  Machine Learning Research} {\bf 11}(Dec):~3571--3594.
+
+\harvarditem{Yu \harvardand\ Moyeed}{2001}{yu2001bayesian}
+Yu, K. \harvardand\ Moyeed, R.~A.  \harvardyearleft 2001\harvardyearright .
+\newblock Bayesian quantile regression, {\em Statistics \& Probability Letters}
+  {\bf 54}(4):~437--447.
+
+\harvarditem{Zhang \harvardand\ Davidian}{2001}{zhang2001linear}
+Zhang, D. \harvardand\ Davidian, M.  \harvardyearleft 2001\harvardyearright .
+\newblock Linear mixed models with flexible distributions of random effects for
+  longitudinal data, {\em Biometrics} {\bf 57}(3):~795--802.
+
+\harvarditem[Zhou et~al.]{Zhou, Hanson \harvardand\ Zhang}{2020}{spbayessurv}
+Zhou, H., Hanson, T. \harvardand\ Zhang, J.  \harvardyearleft
+  2020\harvardyearright .
+\newblock {spBayesSurv}: Fitting {B}ayesian spatial survival models using {R},
+  {\em Journal of Statistical Software} {\bf 92}(9):~1--33.
+
+\end{thebibliography}

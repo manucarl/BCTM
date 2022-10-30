@@ -133,7 +133,7 @@ p2 <- ggplot(pred_dat, aes(x = cholst, y = age, z = d_est))+
   scale_fill_viridis_d(option="A") +
   xlab("Cholesterol")+ylab("Age")  +
   scale_x_continuous( expand = c(0, 0)) +
-  scale_y_continuous(expand = c(0, 0), n.breaks=6, labels=function(x) rescale(x, to=range(Cholesterol$age)))
+  scale_y_continuous(expand = c(0, 0), n.breaks=6, labels=function(x) rescale(x, to=range(data$age)))
 
 p2
 

@@ -1,0 +1,41 @@
+\begin{figure}[!ht]
+\includegraphics[width=\textwidth]{figs/coverages_n100.pdf}
+\caption{\footnotesize caption}\label{fig:covs_n100}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=\textwidth]{figs/coverage_f1_n100.pdf}
+\caption{\footnotesize caption}\label{fig:eff2_n100}
+\end{center}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=\textwidth]{figs/coverage_f2_n100.pdf}
+\caption{\footnotesize caption}\label{fig:eff3_n100}
+\end{center}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=\textwidth]{figs/coverage_f3_n100.pdf}
+\caption{\footnotesize caption}\label{fig:eff4_n100}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=\textwidth]{figs/coverage_f4_n100.pdf}
+\caption{\footnotesize caption}\label{fig:covs_n500}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=\textwidth]{figs/coverages_n500.pdf}
+\caption{\footnotesize caption}\label{fig:eff1_n100}
+\end{figure}

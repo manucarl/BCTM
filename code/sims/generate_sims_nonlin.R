@@ -603,13 +603,14 @@ b <- 0.001
 ret <- vector(mode = "list", length = pmax + 1)
 names(ret) <- ps <- 0:pmax
 
+# iterates through scenarios with increasing number of noise features
 for(pnon in 0:pmax){
   seeds <- matrix(round(runif(R) * 1000), nrow = 1)
   
   for(j in 1:nrow(seeds)){
     print(paste0("Current Scenario: pnon= ", pnon))
     cat("j: ", j, " pnon: ", pnon, "\n")
-    results <- mclapply(seeds[j,], run_sims, its=its, burnin=burnin,  pnon=pnon, mc.cores = cores, m = m, a = a, b = b )          
+    results <- mclapply(seeds[j,], function(seed) run_sims(its=its, burnin=burnin,  pnon=pnon, m = m, a = a, b = b, seed=seed) , mc.cores = cores)          
     ret[[as.character(pnon)]]  <- c(ret[[as.character(pnon)]],
                                     results)
     
