@@ -1,7 +1,7 @@
 ##
 ## Script name: fram_te_log_scores.R
 ##
-## Purpose of script: estimates log scores for Framingham model
+## Purpose of script: estimates log scores for Framingham tensor model
 ##
 ## Author: Manuel Carlan
 ##
@@ -31,8 +31,6 @@ packages <- c("Rcpp", "RcppArmadillo", "RcppEigen", "splines", "mgcv", "Matrix",
 
 
 load_inst(packages)
-
-
 
 
 sourceCpp("code/rcpp/posterior_grad_xx2.cpp")
@@ -113,4 +111,4 @@ pnorm(h_est, log.p = TRUE)
 }, mc.cores = 10
 )
 
-save(log_scores_te, file = "../fram_te_log_scores.RData")
+save(log_scores_te, file = "processed_data/framingham/fram_te_log_scores.RData")

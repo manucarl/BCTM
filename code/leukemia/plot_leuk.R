@@ -42,16 +42,12 @@ scale_pred <- function(x, var){
     attr(var, "scaled:scale")
 }
 
-# data$time <- scale(data$time)
 #get boundary file
 nwengland <- read.bnd(system.file("otherdata/nwengland.bnd", package = "spBayesSurv"))
 
 # construct map in graph format for neighbour matrix
 nmat <- bnd2gra(nwengland)
 
-# data <- data[data$cens == 0,]
-
-nmat_centroids <- get.centroids(nwengland)
 
 # scale for faster sampling
 data$age <- scale(data$age)#%>% as.vector
@@ -60,6 +56,7 @@ data$tpi <- scale(data$tpi)# %>% as.vector
 data$sex[data$sex==0] <- -1
 
 seed <- 1
+# no of mcmc iterations
 its <- 4000
 
 

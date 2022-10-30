@@ -176,7 +176,7 @@ bctm <- function(formula, family = c("gaussian", "logistic", "mev"), data, hyper
   
  } else{
 
-   ll_i = switch(family, gaussian = dnorm, logistic = function(h) ll_logit_i, mev = ll_mev_i)
+   ll_i = switch(family, gaussian = dnorm, logistic = ll_logit_i, mev = ll_mev_i)
 
   DIC <- NULL
   WAIC1 <- loo::waic(sapply((burnin+1):its, function(x) ll_i(chain$beta[x,], xx)) %>% t)

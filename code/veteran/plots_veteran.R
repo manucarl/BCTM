@@ -41,19 +41,20 @@ colnames(dummies) <- c("squam", "small", "adeno", "large")
 data2 <- cbind(data2[,c("time", "status", "karno", "trt")], dummies)
 
 # can scale to unit interval for faster sampling
-# data2$karno <- rescale(data2$karno, c(0,1))
 data2$trt <- ifelse(data2$trt == 2, 1, 0)
 
 family <- "logistic"
 
 
-its <- 2000
+its <- 4000
 n <- nrow(data)
 
 # model 1 - po with censoring-------------------------------------------------------------------------------------------------------------------------
 object <- bctm(time ~ hy_sm(time,data=data2, q=22) + hx_lin(karno) + hx_lin(adeno) + hx_lin(small) + hx_lin(squam) + hx_lin(trt),  
-               family = "logistic", data=data2, cens=as.logical(data2$status), iterations = 2000, intercept=T,
-               hyperparams=list(a=2, b=0.5), nuts_settings=list(adapt_delta = 0.95, max_treedepth=12), seed = seed)
+               family = "logistic", data=data2,
+               cens=as.logical(data2$status), iterations = its, intercept=T,
+               hyperparams=list(a=1, b=0.001),
+               nuts_settings=list(adapt_delta = 0.95, max_treedepth=12), seed = seed)
 
 
 burnin <- object$mcmc$burnin

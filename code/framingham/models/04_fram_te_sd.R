@@ -49,7 +49,6 @@ data$year <- rescale(Cholesterol$year, to = c(0, 1))
 
 #standardize
 data$cholst <- scale(data$cholst)
-# data$age <- scale(data$age)
 
 seed <- 42
 set.seed(seed)
