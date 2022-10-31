@@ -57,7 +57,8 @@ object_lin <- bctm(time ~ hy_sm(time,data=data2, add_to_diag=10e-6, center=T) + 
                   iterations = 4000, 
                   intercept=T,
                   hyperparams=list(a=1, b=0.001), nuts_settings=list(adapt_delta = 0.90, max_treedepth=12), seed = seed)
-# save(object_lin, file="processed_data/vet_po_lin.RData")
+# save(object_lin, file="processed_data/veteran/vet_po_lin.RData")
+load("processed_data/veteran/vet_po_lin.RData")
 
 object_lin$IC
  
@@ -102,16 +103,17 @@ sds <- tibble(BCTM_sd=round(apply(bt_samples, 2, sd), 3)[-(1:20)],
 
 table1 <- bind_cols(coefs, sds, )[,c(1,2,5, 3,6, 4,7)]
 table1
+# A tibble: 4 × 7
 # Parameter            BCTM BCTM_sd    MLT MLT_sd    MPT MPT_sd
 # <chr>               <dbl>   <dbl>  <dbl>  <dbl>  <dbl>  <dbl>
-#    1 score              -0.055   0.011 -0.057  0.011 -0.055  0.01 
-# 2 adeno vs. large     1.37    0.55   1.36   0.561  1.30   0.559
-# 3 small vs. large     1.47    0.51   1.46   0.533  1.36   0.527
-# 4 squamous vs. large -0.147   0.605 -0.188  0.598 -0.173  0.580
+#   1 score              -0.056   0.011 -0.057  0.011 -0.055  0.01 
+# 2 adeno vs. large     1.35    0.591  1.36   0.561  1.30   0.559
+# 3 small vs. large     1.45    0.551  1.46   0.533  1.36   0.527
+# 4 squamous vs. large -0.186   0.626 -0.188  0.598 -0.173  0.58 
 
 xtable::xtable(table1, digits=3)
 
-# model 2 - po with censoring-------------------------------------------------------------------------------------------------------------------------
+# model 2 - po with censoring and nonlinear effect for karnofsky score-------------------------------------------------------------------------------------------------------------
 object_nl <- bctm(time ~ hy_sm(time,data=data2, q=22, add_to_diag=10e-6, center=T) + hx_sm(karno, data=data2, q=6) + hx_lin(adeno) + hx_lin(small) + hx_lin(squam),  
             family = family, data=data2,
             cens=as.logical(data2$status),
@@ -119,7 +121,9 @@ object_nl <- bctm(time ~ hy_sm(time,data=data2, q=22, add_to_diag=10e-6, center=
             intercept=T,
             hyperparams=list(a=1, b=0.001), nuts_settings=list(adapt_delta = 0.95, max_treedepth=12), seed = seed)
 
-save(object_nl, file="processed_data/vet_po_nonlin.RData")
+# save(object_nl, file="processed_data/veteran/vet_po_nonlin.RData")
+load("processed_data/veteran/vet_po_nonlin.RData")
+
 object_nl$IC
 
  

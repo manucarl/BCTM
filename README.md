@@ -23,7 +23,12 @@ in problems involving real world data, again including the comparison with vario
 types of competitors.
 
 ## Data
-All used data is freely available and made available through packages in the code.
+All used data is freely available through packages in the code:
+
+- Framingham illustration: data("Cholesterol", package="qrLMM")
+- Leukemia survival illustration: data("LeukSurv", package="spBayesSurv")
+- Veteran lung cancer illustration: data(cancer, package="survival")
+
 
 ## Code
 - folder ./code/ contains helper functions used by BCTM in setting up the model
