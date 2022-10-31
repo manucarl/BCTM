@@ -31,7 +31,7 @@ All used data is freely available and made available through packages in the cod
 - folder code/rcpp/ contains `rcpp` source files for posteriors (up to a constant) and gradients
 - folder code/sims/ contains R code to reproduce all simulations and plots from the paper and the supplement
 - folder code/framingham/ contains R code to reproduce all models and plots for the Framingham heart study illustration
-- folder code/leukemia/ contains R code to reproduce all models and plots for the Leukemia lung cancer survival illustration
+- folder code/leukemia/ contains R code to reproduce all models and plots for the Leukemia survival illustration
 - folder code/veteran/ contains R code to reproduce all models and plots for the Veteran illustration
 - folder code/mlt_sims/ contains R code from Hothorn et al. (2018) to simulate data
 
