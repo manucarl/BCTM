@@ -38,7 +38,13 @@ All used data is freely available and made available through packages in the cod
 Used libraries are captured in the renv.lock file (after installing the `renv`package use `renv::init()`).
 
 ### Usage
-All code in sims/framingham/leukemia/veteran is self-contained and can be used by simply running the scripts. Code can be used to reproduce the results in the paper and supplement, but is difficult to adapt for different tasks in its current state.
+All code in sims/framingham/leukemia/veteran is self-contained and can be used by simply running the scripts. Code can be used to reproduce the results in the paper and supplement, but is difficult to adapt for different tasks in its current state. The different files in code/nuts/ differ only in the updates of the smoothing variances and prior elicitation schemes (nuts.R is the default used in most of the applications).
+Naming:
+
+- _sd refers to scale-dependent prior
+- _te refers to tensor spline
+- _re refers to random effect
+- _vcm refers to varying coefficient model
 
 
 ## Processed Files
