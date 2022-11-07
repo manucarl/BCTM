@@ -23,11 +23,13 @@ in problems involving real world data, again including the comparison with vario
 types of competitors.
 
 ## Data
-All used data is freely available through packages in the code:
+All used data is freely available through packages:
 
 - Framingham illustration: data("Cholesterol", package="qrLMM")
 - Leukemia survival illustration: data("LeukSurv", package="spBayesSurv")
 - Veteran lung cancer illustration: data(cancer, package="survival")
+
+and via csv in the folder ./data.
 
 
 ## Code
