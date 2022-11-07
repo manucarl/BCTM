@@ -54,6 +54,7 @@ Naming:
 - _te refers to tensor spline
 - _re refers to random effect
 - _vcm refers to varying coefficient model
+- _spat refers to spatial effect
 
 ### Dependencies
 - splines (4.21)
