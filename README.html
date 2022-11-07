@@ -394,8 +394,15 @@ including the comparison with various types of competitors.</p>
 </div>
 <div id="data" class="section level2">
 <h2>Data</h2>
-<p>All used data is freely available and made available through packages
-in the code.</p>
+<p>All used data is freely available through packages:</p>
+<ul>
+<li>Framingham illustration: data(“Cholesterol”, package=“qrLMM”)</li>
+<li>Leukemia survival illustration: data(“LeukSurv”,
+package=“spBayesSurv”)</li>
+<li>Veteran lung cancer illustration: data(cancer,
+package=“survival”)</li>
+</ul>
+<p>and via csv in the folder ./data.</p>
 </div>
 <div id="code" class="section level2">
 <h2>Code</h2>
@@ -413,14 +420,16 @@ plots from the paper and the supplement</li>
 <li>folder code/framingham/ contains R code to reproduce all models and
 plots for the Framingham heart study illustration</li>
 <li>folder code/leukemia/ contains R code to reproduce all models and
-plots for the Leukemia lung cancer survival illustration</li>
+plots for the Leukemia survival illustration</li>
 <li>folder code/veteran/ contains R code to reproduce all models and
 plots for the Veteran illustration</li>
 <li>folder code/mlt_sims/ contains R code from Hothorn et al. (2018) to
 simulate data</li>
 </ul>
-<p>Used libraries are captured in the renv.lock file (after installing
-the <code>renv</code>package use <code>renv::init()</code>).</p>
+<p>All scripts include a helper function that installs and loads used
+libraries. A majority of (but not all) libraries are captured in the
+renv.lock file (after installing the <code>renv</code>package use
+<code>renv::init()</code>).</p>
 <div id="usage" class="section level3">
 <h3>Usage</h3>
 <p>All code in sims/framingham/leukemia/veteran is self-contained and
@@ -435,6 +444,46 @@ applications). Naming:</p>
 <li>_te refers to tensor spline</li>
 <li>_re refers to random effect</li>
 <li>_vcm refers to varying coefficient model</li>
+</ul>
+</div>
+<div id="dependencies" class="section level3">
+<h3>Dependencies</h3>
+<ul>
+<li>splines (4.21)</li>
+<li>dplyr (1.0.10)</li>
+<li>tidyverse (1.3.2)</li>
+<li>mlt (1.4-2)</li>
+<li>tram (0.7-2)</li>
+<li>tramME (1.0.3)</li>
+<li>scam (1.2-13)</li>
+<li>mgcv (1.8-41)</li>
+<li>bamlss (1.1-8)</li>
+<li>Rcpp (1.0.9) RcppArmadillo (0.11.2.3.1) RcppEigen (0.3.3.92)</li>
+<li>qrLMM (2.1)</li>
+<li>viridis (0.6.2)</li>
+<li>MASS (7.3-58.1)</li>
+<li>mvtnorm (1.1-3)</li>
+<li>cowplot (1.1.1)</li>
+<li>gamboostLSS (2.0-6)</li>
+<li>lattice (0.20-45)</li>
+<li>microbenchmark (1.4.9)</li>
+<li>progress (1.2.2)</li>
+<li>devtools (2.4.4)</li>
+<li>doParallel (1.0.17)</li>
+<li>survival (3.4-0)</li>
+<li>spBayesSurv (1.1.6)</li>
+<li>Matrix (1.5-1)</li>
+<li>MCMCpack (1.6-3)</li>
+<li>profvis (0.3.7)</li>
+<li>sf (1.0-8)</li>
+<li>rgeos (0.5-9)</li>
+<li>RhpcBLASctl (0.21-247.1)</li>
+<li>Loo (2.5.1)</li>
+<li>BayesX (0.3-1.1)</li>
+<li>caret (6.0-93)</li>
+<li>sdPrior (1.0-0)<br />
+</li>
+<li>scoringutils (1.0.1)</li>
 </ul>
 </div>
 </div>

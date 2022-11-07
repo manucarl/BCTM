@@ -42,7 +42,7 @@ and via csv in the folder ./data.
 - folder code/veteran/ contains R code to reproduce all models and plots for the Veteran illustration
 - folder code/mlt_sims/ contains R code from Hothorn et al. (2018) to simulate data
 
-Used libraries are captured in the renv.lock file (after installing the `renv`package use `renv::init()`).
+All scripts include a helper function that installs and loads used libraries. A majority of (but not all) libraries are captured in the renv.lock file (after installing the `renv`package use `renv::init()`).
 
 ### Usage
 All code in sims/framingham/leukemia/veteran is self-contained and can be used by simply running the scripts. Code can be used to reproduce the results in the paper and supplement, but is difficult to adapt for different tasks in its current state. The different files in code/nuts/ differ only in the updates of the smoothing variances and prior elicitation schemes (nuts.R is the default used in most of the applications).
@@ -53,6 +53,42 @@ Naming:
 - _re refers to random effect
 - _vcm refers to varying coefficient model
 
+### Dependencies
+- splines (4.21)
+- dplyr (1.0.10)
+- tidyverse (1.3.2)
+- mlt (1.4-2)
+- tram (0.7-2)
+- tramME (1.0.3)
+- scam (1.2-13)
+- mgcv (1.8-41)
+- bamlss (1.1-8)
+- Rcpp (1.0.9) RcppArmadillo (0.11.2.3.1) RcppEigen (0.3.3.92)
+- qrLMM (2.1)
+- viridis (0.6.2)
+- MASS (7.3-58.1)
+- mvtnorm (1.1-3)
+- cowplot  (1.1.1)
+- gamboostLSS (2.0-6)
+- lattice (0.20-45)
+- microbenchmark (1.4.9)
+- progress (1.2.2)
+- devtools (2.4.4)
+- doParallel (1.0.17)
+- survival (3.4-0)
+- spBayesSurv (1.1.6)
+- Matrix (1.5-1)
+- MCMCpack (1.6-3)
+- profvis (0.3.7)
+- sf (1.0-8)
+- rgeos (0.5-9)
+- RhpcBLASctl (0.21-247.1)
+- Loo (2.5.1)
+- BayesX (0.3-1.1)
+- caret (6.0-93)
+- sdPrior (1.0-0)   
+- scoringutils (1.0.1)
+
 
 ## Processed Files
-Folder ./processed_data/ contains all results used in the paper except for files that are larger than GitHub's size limits.
+Folder ./processed_data/ contains all results used in the paper except for files that are larger than GitHub's size limits (due to inclusion of all samples).
