@@ -1,11 +1,12 @@
+# Data Description
 
-# Framinham Heart Study
+## Framinham Heart Study
 ```
 data("Cholesterol", package="qrLMM")
 
 ```
 
-Format
+### Format
 
 newid: a numeric vector indicating the subject on which the measurement was made. It represents the subject number in the sample.
 ID: a numeric vector indicating the subject on which the measurement was made. It represents the subject number in the population.
@@ -22,12 +23,12 @@ https://www.framinghamheartstudy.org/about-fhs/background.php
 
 
 
-# Leukemia Survival
+## Leukemia Survival
 ```
 data("LeukSurv", package="spBayesSurv")
 
 ```
-Format
+### Format
 
 time:	survival time in days
 cens:	right censoring status 0=censored, 1=dead
@@ -43,12 +44,12 @@ Source
 Henderson, R., Shimakura, S., and Gorst, D. (2002), Modeling spatial variation in leukemia survival data, Journal of the American Statistical Association, 97(460), 965-972.
 
 
-# Veteran Lung Cancer Survival
+## Veteran Lung Cancer Survival
 
 ```
 data(cancer, package="survival")
 ```
-Format
+### Format
 
 inst:	Institution code
 time:	Survival time in days
