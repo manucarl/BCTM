@@ -42,7 +42,7 @@ and via csv in the folder ./data.
 - folder code/leukemia/ contains R code to reproduce all models and plots for the Leukemia survival illustration
 - folder code/veteran/ contains R code to reproduce all models and plots for the Veteran illustration
 - folder code/mlt_sims/ contains R code from Hothorn et al. (2018) to simulate data (obtained from Hothorn, T. (2017b).MLT: Most likely transformations: The mlt package, R package vignette version 0.1-5.Available at: https://CRAN.R-project.org/package=mlt.docreg.)
-- file BCTM.rar is intended for review and contains only the code and data
+- file BCTM.rar is intended for review and contains only the blinded code and data
 
 All scripts include a helper function that installs and loads used libraries. A majority of (but not all) libraries are captured in the renv.lock file (after installing the `renv`package use `renv::init()`).
 
