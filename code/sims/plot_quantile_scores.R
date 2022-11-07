@@ -1,3 +1,16 @@
+##
+## Script name: plot_quantile_scores.R
+##
+## Purpose of script: plots quantile scores as shown in the paper
+##
+## Author: BLIND
+##
+## Date Created: 2022-15-7
+##
+## Email: BLIND
+##
+## ---------------------------
+
 library(tidyverse)
 library(dplyr)
 library(tidyr)

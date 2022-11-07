@@ -1,13 +1,13 @@
 ##
-## Script name: vet01_PO_table.R
+## Script name: vet_models.R
 ##
-## Purpose of script: calculates contents of Table 1 (VA lung cancer) in "Bayesian Conditional Transformation Models"
+## Purpose of script: calculates contents of Table 1 (VA lung cancer) in supplement
 ##
-## Author: Manuel Carlan
+## Author: BLIND
 ##
 ## Date Created: 2020-10-5
 ##
-## Email: mcarlan@uni-goettingen.de
+## Email: BLIND
 ##
 ## ---------------------------
 

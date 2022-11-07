@@ -1,4 +1,15 @@
-
+##
+## Script name: generate_tramme_effects.R
+##
+## Purpose of script: estimates nonlinear shift effect via tramME (shown in supplement)
+##
+## Author: BLIND
+##
+## Date Created: 2020-10-7
+##
+## Email: BLIND
+##
+## ---------------------------
 
 # function generating replications----------------------------------------------
 library(dplyr)

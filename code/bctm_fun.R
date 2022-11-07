@@ -1,3 +1,16 @@
+##
+## Script name: bctm_fun.R
+##
+## Purpose of script: implements BCTM
+##
+## Author: BLIND
+##
+## Date Created: 2020-10-5
+##
+## Email: BLIND
+##
+## ---------------------------
+
 bctm <- function(formula, family = c("gaussian", "logistic", "mev"), data, hyperparams=list(a=1, b=0.001), iterations = 2000, start=NULL,
                  warmup = iterations/2, burnin=iterations/2,  cens=NULL, seed = NULL, intercept = TRUE, looic = TRUE, 
                  nuts_settings=list(adapt_delta = 0.8, metric = NULL, step_size = NULL,

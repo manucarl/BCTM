@@ -1,3 +1,16 @@
+##
+## Script name: generate_sims_lin.R
+##
+## Purpose of script: implements linear simulation scenario as shown in the paper
+##
+## Author: BLIND
+##
+## Date Created: 2020-10-7
+##
+## Email: BLIND
+##
+## ---------------------------
+
 library(dplyr)
 seedrepl <- 123
 
@@ -5,8 +18,6 @@ rm(list = ls())
 packages <- c("stringr","MASS","doParallel", "loo",  "BayesX","microbenchmark", "Rcpp", "RcppArmadillo", "splines", "mgcv", "Matrix", "MCMCpack", "sdPrior", "R2BayesX",
               "RhpcBLASctl", "scam", "bamlss", "mlt", "rlang", "scoringutils", "scales")
 
-# mainpath <- "/home/mcarlan/bctm_jasa_revision/code/"
-mainpath <- "c:/onedrive/bctm_jasa_revision/"
 
 source("code/helpers.R")
 
@@ -395,6 +406,6 @@ for(pnon in pmin:pmax){
   }
     res <- ret[as.character(pnon)]
  save(res,
-      file =  paste0(mainpath,"/processed_data/lin_sims_nonlin_pnon", pnon, "_its", its,"_burnin",burnin,"_m", m, ".RData" ))  
+      file =  paste0("/processed_data/lin_sims_nonlin_pnon", pnon, "_its", its,"_burnin",burnin,"_m", m, ".RData" ))  
 }
 

@@ -1,4 +1,4 @@
-# helper functions for mass matrix adaption and mcmc output from package adnuts
+# helper functions for mass matrix adaption and mcmc output from package adnuts (Monnahan CC (2018). adnuts: No-U-Turn MCMC Sampling for ADMB Models)
 
 .compute_next_window <- function(i, anw, warmup, w1, aws, w3){
   anw <- i+aws

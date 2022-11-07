@@ -4,11 +4,11 @@
 ##
 ## Purpose of script: creates VA density plots with added treatment variable in "Bayesian Conditional Transformation Models"
 ##
-## Author: Manuel Carlan
+## Author: BLIND
 ##
 ## Date Created: 2020-10-1
 ##
-## Email: mcarlan@uni-goettingen.de
+## Email: BLIND
 ##
 ## ---------------------------
 

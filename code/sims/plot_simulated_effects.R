@@ -1,3 +1,15 @@
+##
+## Script name: plot_simulated_effects.R
+##
+## Purpose of script: plots estimates nonlinear shift effects as shown in the supplement 
+##
+## Author: BLIND
+##
+## Date Created: 2020-10-7
+##
+## Email: BLIND
+##
+## ---------------------------
 library(tidyverse)
 
 

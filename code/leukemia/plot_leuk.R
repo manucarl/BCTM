@@ -4,11 +4,11 @@
 ##
 ## Purpose of script: generates survivor functions and spatial plot
 ##
-## Author: Manuel Carlan
+## Author: BLIND
 ##
 ## Date Created: 2022-6-5
 ##
-## Email: mcarlan@uni-goettingen.de
+## Email: BLIND
 ##
 ## ---------------------------
 library(dplyr)

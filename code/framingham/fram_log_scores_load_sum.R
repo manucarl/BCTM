@@ -3,11 +3,11 @@
 ##
 ## Purpose of script: performs 10 fold CV and calculates log scores for each fold for both framingham models
 ##
-## Author: Manuel Carlan
+## Author: BLIND
 ##
 ## Date Created: 2021-09-27
 ##
-## Email: mcarlan@uni-goettingen.de
+## Email: BLIND
 ##
 ## ---------------------------
 

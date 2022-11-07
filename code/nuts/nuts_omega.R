@@ -6,11 +6,11 @@
 #                     rstan (Stan Development Team, 2020) and uses mass matrix adaptation from adnuts (Monnahan and Kristensen, 2018)
 ##                    Update of smoothing variances via Gibbs sampling
 ##
-## Author: Manuel Carlan
+## Author: BLIND
 ##
 ## Date Created: 2022-10-7
 ##
-## Email: mcarlan@uni-goettingen.de
+## Email: BLIND
 ##
 ## ---------------------------
 

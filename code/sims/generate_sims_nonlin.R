@@ -1,3 +1,16 @@
+##
+## Script name: generate_sims_nonlin.R
+##
+## Purpose of script: implements nonlinear simulation scenario as shown in the paper
+##
+## Author: BLIND
+##
+## Date Created: 2020-10-7
+##
+## Email: BLIND
+##
+## ---------------------------
+
 library(dplyr)
 
 packages <- c("tidyverse", "stringr","MASS","doParallel", "scoringutils", "BayesX", "Rcpp", "RcppArmadillo", "splines", "mgcv", "Matrix", "MCMCpack", "sdPrior", "R2BayesX", "RhpcBLASctl", "scam", "bamlss", "mlt")

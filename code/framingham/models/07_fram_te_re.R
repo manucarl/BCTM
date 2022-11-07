@@ -2,11 +2,11 @@
 ## Script name: 07_fram_te_re.R
 ##
 ## Purpose of script: estimates model bctm_tensor_re for Framingham
-## Author: Manuel Carlan
+## Author: BLIND
 ##
 ## Date Created: 2022-10-7
 ##
-## Email: mcarlan@uni-goettingen.de
+## Email: BLIND
 ##
 ## ---------------------------
 

@@ -4,11 +4,11 @@
 ##
 ## Purpose of script: creates survivor function and spatial plot for leukemia data in "Bayesian Conditional Transformation Models"
 ##
-## Author: Manuel Carlan
+## Author: BLIND
 ##
 ## Date Created: 2020-6-5
 ##
-## Email: mcarlan@uni-goettingen.de
+## Email: BLIND
 ##
 ## ---------------------------
 library(dplyr)

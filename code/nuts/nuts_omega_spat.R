@@ -5,11 +5,11 @@
 ##                    Bayesian Conditional transformation models; imitates the output style of
 #                     rstan (Stan Development Team, 2020) and uses mass matrix adaptation from adnuts (Monnahan and Kristensen, 2018)
 ##
-## Author: Manuel Carlan
+## Author: BLIND
 ##
 ## Date Created: 2021-05-7
 ##
-## Email: mcarlan@uni-goettingen.de
+## Email: BLIND
 ##
 ## ---------------------------
 

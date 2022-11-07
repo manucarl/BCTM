@@ -1,3 +1,16 @@
+##
+## Script name: plot_mads.R
+##
+## Purpose of script: plots the median absolute deviation results for all scenarios as shown in the paper
+##
+## Author: BLIND
+##
+## Date Created: 2020-10-7
+##
+## Email: BLIND
+##
+## ---------------------------
+
 library(tidyverse)
 library(dplyr)
 library(tidyr)

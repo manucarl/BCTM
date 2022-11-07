@@ -407,24 +407,26 @@ package=“survival”)</li>
 <div id="code" class="section level2">
 <h2>Code</h2>
 <ul>
-<li>folder ./code/ contains helper functions used by BCTM in setting up
-the model</li>
-<li>folder code/nuts/ contains the NUTS code used for posterior
+<li><p>folder ./code/ contains helper functions used by BCTM in setting
+up the model</p></li>
+<li><p>folder code/nuts/ contains the NUTS code used for posterior
 inference. <strong>Note that, currently, updates of the smoothing
 variances and results of the prior elicitation process for <span class="math inline">\(\theta\)</span> are hardcoded in many
-cases.</strong></li>
-<li>folder code/rcpp/ contains <code>rcpp</code> source files for
-posteriors (up to a constant) and gradients</li>
-<li>folder code/sims/ contains R code to reproduce all simulations and
-plots from the paper and the supplement</li>
-<li>folder code/framingham/ contains R code to reproduce all models and
-plots for the Framingham heart study illustration</li>
-<li>folder code/leukemia/ contains R code to reproduce all models and
-plots for the Leukemia survival illustration</li>
-<li>folder code/veteran/ contains R code to reproduce all models and
-plots for the Veteran illustration</li>
-<li>folder code/mlt_sims/ contains R code from Hothorn et al. (2018) to
-simulate data</li>
+cases.</strong></p></li>
+<li><p>folder code/rcpp/ contains <code>rcpp</code> source files for
+posteriors (up to a constant) and gradients</p></li>
+<li><p>folder code/sims/ contains R code to reproduce all simulations
+and plots from the paper and the supplement (obtained from Hothorn, T.
+(2017b).MLT: Most likely transformations: The mlt package, R package
+vignette version 0.1-5.Available at: <a href="https://CRAN.R-project.org/package=mlt.docreg" class="uri">https://CRAN.R-project.org/package=mlt.docreg</a>.)</p></li>
+<li><p>folder code/framingham/ contains R code to reproduce all models
+and plots for the Framingham heart study illustration</p></li>
+<li><p>folder code/leukemia/ contains R code to reproduce all models and
+plots for the Leukemia survival illustration</p></li>
+<li><p>folder code/veteran/ contains R code to reproduce all models and
+plots for the Veteran illustration</p></li>
+<li><p>folder code/mlt_sims/ contains R code from Hothorn et al. (2018)
+to simulate data</p></li>
 </ul>
 <p>All scripts include a helper function that installs and loads used
 libraries. A majority of (but not all) libraries are captured in the
@@ -490,7 +492,8 @@ applications). Naming:</p>
 <div id="processed-files" class="section level2">
 <h2>Processed Files</h2>
 <p>Folder ./processed_data/ contains all results used in the paper
-except for files that are larger than GitHub’s size limits.</p>
+except for files that are larger than GitHub’s size limits (due to
+inclusion of all samples).</p>
 </div>
 </div>
 

@@ -3,11 +3,11 @@
 ##
 ## Purpose of script: estimates log scores for Framingham tensor model
 ##
-## Author: Manuel Carlan
+## Author: BLIND
 ##
 ## Date Created: 2022-10-8
 ##
-## Email: mcarlan@uni-goettingen.de
+## Email: BLIND
 ##
 ## ---------------------------
 

@@ -1,15 +1,16 @@
 ##
-## Script name: nuts.R
+## Script name: nuts_omega_flex.R
 ##
 ## Purpose of script: implements the No-U-Turn sampler by Hoffmann and Gelman (2014) with dual averaging and mass matrix adaption for 
 ##                    Bayesian Conditional transformation models; imitates the output style of
 #                     rstan (Stan Development Team, 2020) and uses mass matrix adaptation from adnuts (Monnahan and Kristensen, 2018)
+##                    Implements more flexible updates of smoothing variances for tensor splines
 ##
-## Author: Manuel Carlan
+## Author: BLIND
 ##
 ## Date Created: 2020-10-7
 ##
-## Email: mcarlan@uni-goettingen.de
+## Email: BLIND
 ##
 ## ---------------------------
 

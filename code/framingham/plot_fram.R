@@ -3,11 +3,11 @@
 ##
 ## Purpose of script: plots estimated conditional densities for models bctm_vcm and bctm_te
 ##
-## Author: Manuel Carlan
+## Author: BLIND
 ##
 ## Date Created: 2022-10-7
 ##
-## Email: mcarlan@uni-goettingen.de
+## Email: BLIND
 ##
 ## ---------------------------
 

@@ -1,4 +1,5 @@
-
+# All code in this script is obtained from:
+# Hothorn, T. (2017b).MLT: Most likely transformations: The mlt package, R package vignette version 0.1-5.Available at: https://CRAN.R-project.org/package=mlt.docreg.
 # library("ctm")
 # library("np")
 # library("gamboostLSS")

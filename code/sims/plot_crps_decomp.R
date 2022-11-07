@@ -1,3 +1,16 @@
+##
+## Script name: plot_crps_decomp.R
+##
+## Purpose of script: plots CRPS decomposition for scenario with zero and five noise parameters from BCTM and MLT
+##
+## Author: BLIND
+##
+## Date Created: 2022-10-7
+##
+## Email: BLIND
+##
+## ---------------------------
+
 library(tidyverse)
 library(dplyr)
 library(tidyr)

@@ -3,11 +3,11 @@
 ##
 ## Purpose of script: estimates model bctm_vcm for Framingham
 ##
-## Author: Manuel Carlan
+## Author: BLIND
 ##
 ## Date Created: 2022-10-5
 ##
-## Email: mcarlan@uni-goettingen.de
+## Email: BLIND
 ##
 ## ---------------------------
 

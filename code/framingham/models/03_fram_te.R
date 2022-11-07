@@ -3,11 +3,11 @@
 ##
 ## Purpose of script: estimates model bctm_tensor for Framingham 
 ##
-## Author: Manuel Carlan
+## Author: BLIND
 ##
 ## Date Created: 2020-10-7
 ##
-## Email: mcarlan@uni-goettingen.de
+## Email: BLIND
 ##
 ## ---------------------------
 

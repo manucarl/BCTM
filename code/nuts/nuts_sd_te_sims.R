@@ -1,15 +1,17 @@
 ##
-## Script name: nuts.R
+## Script name: nuts_sd_te_sims.R
 ##
 ## Purpose of script: implements the No-U-Turn sampler by Hoffmann and Gelman (2014) with dual averaging and mass matrix adaption for 
 ##                    Bayesian Conditional transformation models; imitates the output style of
 #                     rstan (Stan Development Team, 2020) and uses mass matrix adaptation from adnuts (Monnahan and Kristensen, 2018)
+##                    Uses IWLS updates for tau2 (NOT Gibbs)
+##                    Uses scale-dependent priors where theta for prior elicitation is hard-coded (see 07_fram_te_re_sd.R)
 ##
-## Author: Manuel Carlan
+## Author: BLIND
 ##
-## Date Created: 2020-10-7
+## Date Created: 2022-10-7
 ##
-## Email: mcarlan@uni-goettingen.de
+## Email: BLIND
 ##
 ## ---------------------------
 

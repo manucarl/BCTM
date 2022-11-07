@@ -36,11 +36,12 @@ and via csv in the folder ./data.
 - folder ./code/ contains helper functions used by BCTM in setting up the model
 - folder code/nuts/ contains the NUTS code used for posterior inference. **Note that, currently, updates of the smoothing variances and results of the prior elicitation process for $\theta$ are hardcoded in many cases.**
 - folder code/rcpp/ contains `rcpp` source files for posteriors (up to a constant) and gradients
-- folder code/sims/ contains R code to reproduce all simulations and plots from the paper and the supplement
+- folder code/sims/ contains R code to reproduce all simulations and plots from the paper and the supplement 
+
 - folder code/framingham/ contains R code to reproduce all models and plots for the Framingham heart study illustration
 - folder code/leukemia/ contains R code to reproduce all models and plots for the Leukemia survival illustration
 - folder code/veteran/ contains R code to reproduce all models and plots for the Veteran illustration
-- folder code/mlt_sims/ contains R code from Hothorn et al. (2018) to simulate data
+- folder code/mlt_sims/ contains R code from Hothorn et al. (2018) to simulate data (obtained from Hothorn, T. (2017b).MLT: Most likely transformations: The mlt package, R package vignette version 0.1-5.Available at: https://CRAN.R-project.org/package=mlt.docreg.)
 
 All scripts include a helper function that installs and loads used libraries. A majority of (but not all) libraries are captured in the renv.lock file (after installing the `renv`package use `renv::init()`).
 

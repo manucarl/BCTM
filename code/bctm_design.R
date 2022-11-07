@@ -1,3 +1,16 @@
+##
+## Script name: bctm_design.R
+##
+## Purpose of script: constructs design matrix for BCTM
+##
+## Author: BLIND
+##
+## Date Created: 2020-10-5
+##
+## Email: BLIND
+##
+## ---------------------------
+
 bctm_setup <- function (formula, data, intercept, specials = c("hx_lin", "hyx_sm,", "hyx_vcm", "hy_sm", "hx_sm", "hx_spat")){
   
   

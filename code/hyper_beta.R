@@ -1,3 +1,17 @@
+## ---------------------------
+##
+## Script name: hyper_beta.R
+##
+## Purpose of script: elicitates theta on basis of a precision matrix, a threshold c and probability alpha for a tensor spline (adapted from sdPrior)
+##
+## Author: BLIND
+##
+## Date Created: 2022-6-5
+##
+## Email: BLIND
+##
+## ---------------------------
+
 hyper_beta <- function (Kinv, alpha = 0.1, ct = 3, R = 10000, myseed = 42) {
   
 

@@ -7,11 +7,11 @@
 ##                    Uses IWLS updates for updating the smoothing variance (NOT Gibbs)
 ##                    NOTE: theta is currently hard-coded
 ##
-## Author: Manuel Carlan
+## Author: BLIND
 ##
 ## Date Created: 2022-10-22
 ##
-## Email: mcarlan@uni-goettingen.de
+## Email: BLIND
 ##
 ## ---------------------------
 

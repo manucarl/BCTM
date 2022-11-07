@@ -1,6 +1,19 @@
+##
+## Script name: plot_coverages.R
+##
+## Purpose of script: plots coverages obtained from BCTM and MLT as shown in the paper and supplement
+##
+## Author: BLIND
+##
+## Date Created: 2020-10-7
+##
+## Email: BLIND
+##
+## ---------------------------
+
 library(tidyverse)
 
-# plot coverage rates for BCTM and MLT ------------------------------------------------------------
+# 
 R <- 100
 
 for(n in c(100, 500)){

@@ -1,3 +1,16 @@
+##
+## Script name: plot_quantile_deviations.R
+##
+## Purpose of script: plots quantile deviations as shown in the papers
+##
+## Author: BLIND
+##
+## Date Created: 2022-12-7
+##
+## Email: BLIND
+##
+## ---------------------------
+
 library(tidyverse)
 
 pmax <- 5
