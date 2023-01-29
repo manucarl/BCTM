@@ -22,6 +22,8 @@ Bayesian quantile regression. Two applications illustrate the versatility of BCT
 in problems involving real world data, again including the comparison with various
 types of competitors.
 
+================
+
 ## Data
 All used data is freely available through packages:
 
