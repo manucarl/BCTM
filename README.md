@@ -45,7 +45,7 @@ and via csv in the folder ./data.
   - plot_crps_decomp.R produces Figure 4
   - plot_coverages.R produces Figure 5 and Figure C.2
   - plot_simulated_effects.R produces Figures C.3 to 10
-  (on basis of an RData file generated in generate_sims_lin.R and generate_sims_nonlin.R)
+  (generate_sims_lin.R and generate_sims_nonlin.R generates RData files)
 - folder code/framingham/ contains R code to reproduce all models and plots for the Framingham heart study illustration
   - plot_fram.R produces Figure 6 and 7
   - folder ./models/ contains code for running the models that, together with fram_te_log_scores.R and fram_log_scores_load_sum.R  are reported in Table B.2
