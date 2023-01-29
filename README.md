@@ -36,11 +36,23 @@ and via csv in the folder ./data.
 - folder ./code/ contains helper functions used by BCTM in setting up the model
 - folder code/nuts/ contains the NUTS code used for posterior inference. **Note that, currently, updates of the smoothing variances and results of the prior elicitation process for $\theta$ are hardcoded in many cases.**
 - folder code/rcpp/ contains `rcpp` source files for posteriors (up to a constant) and gradients
-- folder code/sims/ contains R code to reproduce all simulations and plots from the paper and the supplement 
-
+- folder code/sims/ contains R code to reproduce all simulations and plots from the paper and the supplement
+  - plot_mads.R produces Figure 1
+  - plot_quantile_deviations.R produces Figure 2
+  - plot_quantile_scores.R produces Figure 3
+  - plot_crps_decomp.R produces Figure 4
+  - plot_coverages.R produces Figure 5 and Figure C.2
+  - plot_simulated_effects.R produces Figures C.3 to 10
+  (on basis of an RData file generated in generate_sims_lin.R and generate_sims_nonlin.R)
 - folder code/framingham/ contains R code to reproduce all models and plots for the Framingham heart study illustration
+  - plot_fram.R produces Figure 6 and 7
+  - folder ./models/ contains code for running the models that, together with fram_te_log_scores.R and fram_log_scores_load_sum.R  are reported in Table B.2
+  - fram_ess_rhat.R produces Table B.3 and B.4
 - folder code/leukemia/ contains R code to reproduce all models and plots for the Leukemia survival illustration
+  - leuk_comparison.R produces Table 1 and 2
+  - plot_leuk.R produces Figure 8 and Table B.5
 - folder code/veteran/ contains R code to reproduce all models and plots for the Veteran illustration
+  - plot_veteran.R produces Figure B.1
 - folder code/mlt_sims/ contains R code from Hothorn et al. (2018) to simulate data (obtained from Hothorn, T. (2017b).MLT: Most likely transformations: The mlt package, R package vignette version 0.1-5.Available at: https://CRAN.R-project.org/package=mlt.docreg.)
 - file BCTM.rar is intended for review and contains only the blinded code and data
 

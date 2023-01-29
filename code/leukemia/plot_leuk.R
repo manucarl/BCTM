@@ -212,6 +212,6 @@ p2
 
 p <-cowplot::plot_grid(p1, p2, labels=c("A","B"), ncol=2)#+ panel_border(remove = TRUE, color="white")
 p
-ggsave("manuscript/figs/leuk_ph.pdf", plot=p,height=3.5, width=9, units="in", bg = "transparent")
+#ggsave("manuscript/figs/leuk_ph.pdf", plot=p,height=3.5, width=9, units="in", bg = "transparent")
 
 
